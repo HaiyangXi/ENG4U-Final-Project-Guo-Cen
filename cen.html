@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>VENUS CHRONICLES — Ultimate Academic Thesis</title>
+  <style>
+    :root{
+      --bg: #050810;
+      --card: #ffffff;
+      --muted: #64748b;
+      --text: #0f172a;
+      --ring: #e2e8f0;
+      --shadow: 0 20px 50px -12px rgba(0,0,0,0.1);
+      --shadow-lg: 0 40px 80px -20px rgba(0,0,0,0.25);
+      --radius-xl: 2.5rem;
+      --radius-2xl: 4rem;
+      --rose: #f43f5e;
+      --amber: #f59e0b;
+      --orange: #fb923c;
+      --blue: #2563eb;
+      --indigo: #4f46e5;
+      --cyan: #06b6d4;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Inter", system-ui, -apple-system, sans-serif;
+      color: var(--text);
+      background: #f8fafc;
+      line-height: 1.6;
+    }
+
+    /* --- 通用布局 --- */
+    .container { width: min(1200px, 92vw); margin: 0 auto; }
+    .section-padding { padding: 6rem 0; }
+    .space-y-huge { display: flex; flex-direction: column; gap: 10rem; }
+
+    /* --- Hero --- */
+    .hero {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg);
+      color: #fff;
+      overflow: hidden;
+      text-align: center;
+    }
+    .glow {
+      position: absolute;
+      width: 800px; height: 800px;
+      background: radial-gradient(circle, rgba(244,63,94,0.12) 0%, transparent 70%);
+      filter: blur(100px);
+      animation: pulse 5s infinite alternate;
+    }
+    @keyframes pulse { from { transform: scale(1); opacity: 0.6; } to { transform: scale(1.15); opacity: 0.9; } }
+
+    .hero-content { z-index: 10; }
+    .hero-title {
+      font-size: clamp(3.5rem, 10vw, 8.5rem);
+      font-weight: 900;
+      line-height: 0.85;
+      letter-spacing: -0.05em;
+      margin-bottom: 2rem;
+    }
+    .hero-title span {
+      background: linear-gradient(to right, var(--rose), var(--amber));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .pill {
+      display: inline-block;
+      padding: 0.6rem 1.6rem;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 99px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 2.5rem;
+    }
+
+    /* --- 雨滴特效 --- */
+    .rain-container { position: absolute; inset: 0; pointer-events: none; opacity: 0.25; }
+    .drop { position: absolute; width: 1px; height: 120px; background: linear-gradient(transparent, #60a5fa); top: -150px; animation: fall linear infinite; }
+    @keyframes fall { to { transform: translateY(115vh); } }
+
+    /* --- 学术支柱 --- */
+    .pillar-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      margin-top: -6rem;
+      position: relative;
+      z-index: 20;
+    }
+    .pillar-card {
+      background: white;
+      padding: 3.5rem;
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+      border-top: 6px solid var(--rose);
+      transition: 0.3s;
+    }
+    .pillar-card:hover { transform: translateY(-12px); box-shadow: var(--shadow-lg); }
+    .pillar-card h4 { color: var(--muted); text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.2em; margin-bottom: 1rem; }
+    .pillar-card h3 { font-size: 1.6rem; margin: 0 0 1rem; font-weight: 900; letter-spacing: -0.02em; }
+
+    /* --- 模块标题 --- */
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 4rem;
+      padding: 1.5rem 2.5rem;
+      border-radius: 2rem;
+      color: white;
+      box-shadow: var(--shadow);
+    }
+    .icon-box { width: 50px; height: 50px; border-radius: 1rem; display: grid; place-items: center; font-size: 1.4rem; background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3); }
+    .section-header h2 { font-size: 2.2rem; font-weight: 900; margin: 0; letter-spacing: -0.03em; text-transform: uppercase; font-style: italic; }
+
+    /* --- 时间轴 (Timeline) --- */
+    .timeline { position: relative; padding: 2rem 0; }
+    .timeline::before { content: ""; position: absolute; left: 50%; top: 0; bottom: 0; width: 4px; background: var(--ring); transform: translateX(-50%); border-radius: 2px; }
+    .t-item { position: relative; width: 50%; padding: 2rem 4rem; box-sizing: border-box; }
+    .t-item.left { left: 0; text-align: right; }
+    .t-item.right { left: 50%; text-align: left; }
+    .t-dot { position: absolute; width: 20px; height: 20px; background: var(--indigo); border: 4px solid white; border-radius: 50%; top: 50%; transform: translateY(-50%); z-index: 5; }
+    .t-item.left .t-dot { right: -12px; }
+    .t-item.right .t-dot { left: -12px; }
+    .t-year { font-weight: 900; color: var(--indigo); letter-spacing: 0.1em; font-size: 1.2rem; }
+
+    /* --- 分析网格 --- */
+    .grid { display: grid; gap: 2.5rem; }
+    .grid-2 { grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); }
+    .card { background: white; padding: 3rem; border-radius: var(--radius-xl); box-shadow: var(--shadow); position: relative; }
+    .card .num { position: absolute; top: 2rem; right: 2rem; font-weight: 900; color: #f1f5f9; font-size: 3rem; line-height: 1; z-index: 0; }
+    .card h3 { position: relative; z-index: 1; font-size: 1.8rem; font-weight: 900; margin: 0 0 1.5rem; letter-spacing: -0.02em; }
+    .card p { position: relative; z-index: 1; color: var(--muted); font-size: 1.1rem; }
+
+    /* --- 角色分析 (Archetypes) --- */
+    .char-split { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 1.5rem; background: white; padding: 1.5rem; border-radius: 3rem; box-shadow: var(--shadow); }
+    .char-side { padding: 4rem; border-radius: 2rem; }
+    .char-side.light { background: #f8fafc; }
+    .char-side.dark { background: #0f172a; color: white; }
+    .char-tag { font-weight: 900; text-transform: uppercase; letter-spacing: 0.2em; font-size: 0.7rem; margin-bottom: 1rem; display: block; }
+
+    /* --- 反思区 --- */
+    .reflection { background: #0f172a; color: white; padding: 6rem; border-radius: 4rem; position: relative; overflow: hidden; }
+    .reflection blockquote { font-size: clamp(1.4rem, 2.5vw, 2.2rem); font-weight: 700; line-height: 1.4; margin: 0; font-style: italic; z-index: 5; position: relative; }
+    .reflection::after { content: "“"; position: absolute; top: -2rem; right: 4rem; font-size: 20rem; color: rgba(255,255,255,0.05); font-family: serif; }
+
+    /* --- 视频播放器 --- */
+    .video-box { aspect-ratio: 16/9; background: #000; border-radius: 3.5rem; overflow: hidden; border: 15px solid white; box-shadow: var(--shadow-lg); position: relative; }
+    .video-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer; background: linear-gradient(rgba(15,23,42,0.6), rgba(15,23,42,0.9)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2000'); background-size: cover; z-index: 10; }
+    .play-btn { width: 100px; height: 100px; background: white; border-radius: 50%; display: grid; place-items: center; font-size: 2rem; color: var(--bg); transition: 0.3s; margin-bottom: 1.5rem; }
+    .video-overlay:hover .play-btn { transform: scale(1.15); background: var(--rose); color: white; }
+
+    /* 渐变背景 */
+    .g-blue { background: linear-gradient(90deg, #1d4ed8, #312e81); }
+    .g-dark { background: linear-gradient(90deg, #0f172a, #000); }
+    .g-rose { background: linear-gradient(90deg, #f43f5e, #9f1239); }
+    .g-amber { background: linear-gradient(90deg, #f59e0b, #9a3412); }
+    .g-cyan { background: linear-gradient(90deg, #06b6d4, #1e40af); }
+
+    @media (max-width: 900px) {
+      .timeline::before { left: 20px; }
+      .t-item { width: 100%; text-align: left !important; padding-left: 50px; padding-right: 0; }
+      .t-dot { left: 10px !important; }
+      .grid-2 { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="glow"></div>
+    <div class="rain-container" id="rain"></div>
+    <div class="hero-content">
+      <div class="pill">ENG4U University Preparation English</div>
+      <h1 class="hero-title">VENUS<br><span>CHRONICLES</span></h1>
+      <p class="hero-sub" style="letter-spacing:0.4em; color:rgba(255,255,255,0.6);">A MULTIMODAL ACADEMIC THESIS</p>
+      <div style="margin-top:4rem; font-weight: 900; letter-spacing: 0.2em; border-bottom: 2px solid var(--rose); display: inline-block; padding-bottom: 5px;">BY OLIVER CEN</div>
+    </div>
+  </header>
+
+  <main class="container section-padding">
+    
+    <!-- THEMATIC PILLARS -->
+    <section class="pillar-grid">
+      <div class="pillar-card">
+        <h4>Conflict</h4>
+        <h3>Individual vs. Mob</h3>
+        <p>The violent suppression of Margot is a sociological ritual that restores the group's "unity" at the cost of empathy.</p>
+      </div>
+      <div class="pillar-card" style="border-top-color: var(--amber);">
+        <h4>Psychology</h4>
+        <h3>Existential Envy</h3>
+        <p>They hate Margot not because she is wrong, but because she remembers a truth they are incapable of seeing.</p>
+      </div>
+      <div class="pillar-card" style="border-top-color: var(--indigo);">
+        <h4>Literary Motif</h4>
+        <h3>The Silent Sun</h3>
+        <p>The 60-minute appearance of the sun serves as a catalyst for a collective "epiphany of guilt" and loss of innocence.</p>
+      </div>
+    </section>
+
+    <div class="space-y-huge section-padding">
+      
+      <!-- 1. AUTHOR TIMELINE (From Version 1) -->
+      <section id="biography">
+        <div class="section-header g-blue">
+          <div class="icon-box">🎓</div>
+          <h2>Ray Bradbury Legacy</h2>
+        </div>
+        <div class="timeline" id="timeline-box">
+          <!-- JS 注入 -->
+        </div>
+      </section>
+
+      <!-- 2. PLOT & THEMATIC EXPLORATION (Merged) -->
+      <section id="analysis">
+        <div class="section-header g-rose">
+          <div class="icon-box">📌</div>
+          <h2>Thematic Exploration</h2>
+        </div>
+        <div class="grid grid-2" id="analysis-grid">
+          <!-- JS 注入 -->
+        </div>
+      </section>
+
+      <!-- 3. CRITICAL LENSES (From Version 2) -->
+      <section id="lenses">
+        <div class="section-header g-cyan">
+          <div class="icon-box">👁️</div>
+          <h2>Critical Perspectives</h2>
+        </div>
+        <div class="grid grid-2">
+          <div class="card">
+            <div class="num">01</div>
+            <h3 style="color:var(--cyan)">Sociological Perspective</h3>
+            <p><strong>Groupthink & Deindividuation:</strong> On Venus, individuality is a threat. William acts as the "Agent of Conformity," turning a classroom into a predatory pack. This mirrors the bystander effect, where collective silence becomes active cruelty.</p>
+          </div>
+          <div class="card">
+            <div class="num">02</div>
+            <h3 style="color:var(--indigo)">Psychoanalytic Perspective</h3>
+            <p><strong>The Repression of Desires:</strong> The children's hatred for Margot is a defense mechanism. She represents their own repressed longing for the sun; by locking her away, they are symbolically locking away their own pain of forgetting.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. CHARACTER ARCHETYPES (From Version 2) -->
+      <section id="archetypes">
+        <div class="section-header g-amber">
+          <div class="icon-box">👥</div>
+          <h2>Character Archetypes</h2>
+        </div>
+        <div class="char-split">
+          <div class="char-side light">
+            <span class="char-tag" style="color:var(--rose)">The Outcast / Truth-Bearer</span>
+            <h3 style="font-size: 2.2rem; margin: 0.5rem 0;">Margot</h3>
+            <p>Pale, frail, and "like a photograph dusted from an old album." She represents the <strong>Soul</strong> in a mechanized world. Her memory of Earth is a spiritual burden that the others cannot tolerate.</p>
+          </div>
+          <div class="char-side dark">
+            <span class="char-tag" style="color:var(--indigo)">The Antagonist / Collective</span>
+            <h3 style="font-size: 2.2rem; margin: 0.5rem 0;">William & The Mob</h3>
+            <p>They are the <strong>Body</strong> without a soul. Acting as a single organism, they use physical force to compensate for their lack of transcendental memory. Their identity exists only in their shared ignorance.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. SYMBOLIC DUALITY (Literary Craft) -->
+      <section id="craft">
+        <div class="section-header g-dark">
+          <div class="icon-box">🖋️</div>
+          <h2>Literary Craftsmanship</h2>
+        </div>
+        <div class="grid grid-2">
+          <div class="card" style="border-left: 8px solid var(--blue);">
+            <h3>Pathetic Fallacy</h3>
+            <p>The "conveyor belt" of rain is not just weather; it is the physical manifestation of the children's psychological erosion. The rain washes away their capacity for empathy over seven relentless years.</p>
+          </div>
+          <div class="card" style="border-left: 8px solid var(--amber);">
+            <h3>Symbolic Duality</h3>
+            <p><strong>The Closet vs. The Jungle:</strong> The closet is a womb of darkness where Margot is "buried alive," while the Venusian jungle is a chaotic, rubbery maze. Both represent the hostility of an environment devoid of light.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6. REFLECTION (Deep Conclusion) -->
+      <section id="reflection">
+        <div class="reflection">
+          <blockquote id="reflection-text"></blockquote>
+          <div style="margin-top: 3rem; color: var(--rose); font-weight: 900; letter-spacing: 0.3em; text-transform: uppercase; font-size: 0.8rem;">
+            Academic Conclusion — The Weight of Silence
+          </div>
+        </div>
+      </section>
+
+      <!-- 7. DEFENSE VIDEO -->
+      <section id="media">
+        <div class="section-header g-blue">
+          <div class="icon-box">▶</div>
+          <h2>Digital Oral Defense</h2>
+        </div>
+        <div class="video-box" id="v-container">
+          <div class="video-overlay" onclick="startVideo()">
+            <div class="play-btn">▶</div>
+            <h3 style="color:white; letter-spacing: 0.1em; font-weight: 900;">LAUNCH MULTIMODAL ANALYSIS</h3>
+            <p style="color:rgba(255,255,255,0.5); font-family: monospace;">OLIVER_CEN_THESIS_V4.MP4</p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer style="padding: 10rem 0 6rem; background: white; text-align: center; border-top: 1px solid var(--ring);">
+    <h2 style="font-weight: 900; letter-spacing: -0.05em; font-size: 3.5rem; margin: 0;">Oliver Cen<span>.</span></h2>
+    <div style="color: var(--muted); font-weight: 800; letter-spacing: 0.4em; text-transform: uppercase; margin-top: 1rem;">ENG4U Academic Portfolio</div>
+    <div style="margin-top: 4rem; display: flex; justify-content: center; gap: 3rem; font-weight: 900; font-size: 0.7rem; color: var(--ring);">
+       <span>PLOT</span> <span>SOCIOLOGY</span> <span>ARCHETYPES</span> <span>REFLECTION</span>
+    </div>
+  </footer>
+
+  <script>
+    // --- 完整整合的数据集 ---
+    const FULL_DATA = {
+      timeline: [
+        { year: "1920", event: "Birth of a Visionary", detail: "Ray Bradbury was born in Illinois. His early love for silent films would later shape his vivid prose." },
+        { year: "1950", event: "Martian Chronicles", detail: "A breakthrough collection that used sci-fi to explore human prejudice and social anxiety." },
+        { year: "1954", event: "All Summer in a Day", detail: "Published at the peak of the Cold War, reflecting the era's fear of the 'unthinking mob'." },
+        { year: "2012", event: "Infinite Legacy", detail: "Died as a master of American literature, having bridged the gap between pulp and academia." }
+      ],
+      analysis: [
+        { 
+          head: "The Rainy Stasis", 
+          body: "The rain acts as a sensory prison. Bradbury uses kinetic imagery to show how environment dictates morality; without light, compassion simply withers." 
+        },
+        { 
+          head: "The Crucial Betrayal", 
+          body: "Margot's knowledge of the sun sparks violent jealousy. Locking her in the closet is a symbolic 'murder' of the only witness to beauty." 
+        },
+        { 
+          head: "Epiphany of Guilt", 
+          body: "The final scene—the slow walk to the closet—marks the loss of innocence. Their collective silence is the true tragedy of the story." 
+        },
+        { 
+          head: "The Tall Poppy Syndrome", 
+          body: "Margot is 'cut down' because she is different. The group’s action is a violent attempt to equalize everyone to the level of the average." 
+        }
+      ],
+      reflection: "Bradbury doesn't just write about a planet; he writes about the architecture of the human heart. As an ENG4U student, I recognize that 'the closet' exists in our modern echo chambers—it's built whenever we silence an individual for having seen a different 'sun'. True education is the process of learning how to value the 'other', ensuring that the door never locks. Margot’s silence at the end is a permanent stain on the group's conscience, a reminder that some acts of cruelty can never be fully washed away by the rain.",
+      youtubeId: "MhI0O99K864"
+    };
+
+    // --- 动画与渲染逻辑 ---
+    function init() {
+      // 1. 雨滴
+      const r = document.getElementById('rain');
+      for(let i=0; i<85; i++) {
+        const d = document.createElement('div');
+        d.className = 'drop';
+        d.style.left = Math.random() * 100 + 'vw';
+        d.style.animationDuration = (0.5 + Math.random()) + 's';
+        d.style.animationDelay = Math.random() * 2 + 's';
+        r.appendChild(d);
+      }
+
+      // 2. 时间轴
+      const tb = document.getElementById('timeline-box');
+      FULL_DATA.timeline.forEach((item, idx) => {
+        const div = document.createElement('div');
+        div.className = `t-item ${idx%2===0?'left':'right'}`;
+        div.innerHTML = `
+          <div class="t-dot"></div>
+          <div class="t-year">${item.year}</div>
+          <h3 style="margin: 0.5rem 0;">${item.event}</h3>
+          <p style="color:var(--muted); font-size:0.95rem;">${item.detail}</p>
+        `;
+        tb.appendChild(div);
+      });
+
+      // 3. 分析网格
+      const ag = document.getElementById('analysis-grid');
+      FULL_DATA.analysis.forEach((item, idx) => {
+        ag.innerHTML += `
+          <div class="card">
+            <div class="num">${String(idx+1).padStart(2,'0')}</div>
+            <h3>${item.head}</h3>
+            <p>${item.body}</p>
+          </div>
+        `;
+      });
+
+      // 4. 反思
+      document.getElementById('reflection-text').innerText = FULL_DATA.reflection;
+    }
+
+    function startVideo() {
+      const v = document.getElementById('v-container');
+      v.innerHTML = `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/${FULL_DATA.youtubeId}?autoplay=1&modestbranding=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
+    }
+
+    window.onload = init;
+  </script>
+</body>
+</html>
