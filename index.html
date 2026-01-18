@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>VENUS CHRONICLES — Ultimate Academic Thesis</title>
+  <title>ALL SUMMER IN A DAY — Academic Digital Thesis</title>
   <style>
     :root{
       --bg: #050810;
@@ -30,6 +30,8 @@
       font-family: "Inter", system-ui, -apple-system, sans-serif;
       color: var(--text);
       background: #f8fafc;
+      background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
+      background-size: 32px 32px; /* 微妙的点阵背景 */
       line-height: 1.6;
     }
 
@@ -38,7 +40,7 @@
     .section-padding { padding: 6rem 0; }
     .space-y-huge { display: flex; flex-direction: column; gap: 10rem; }
 
-    /* --- Hero --- */
+    /* --- Hero Section --- */
     .hero {
       position: relative;
       height: 100vh;
@@ -52,45 +54,85 @@
     }
     .glow {
       position: absolute;
-      width: 800px; height: 800px;
-      background: radial-gradient(circle, rgba(244,63,94,0.12) 0%, transparent 70%);
-      filter: blur(100px);
+      width: 900px; height: 900px;
+      background: radial-gradient(circle, rgba(244,63,94,0.15) 0%, transparent 70%);
+      filter: blur(120px);
       animation: pulse 5s infinite alternate;
     }
-    @keyframes pulse { from { transform: scale(1); opacity: 0.6; } to { transform: scale(1.15); opacity: 0.9; } }
+    @keyframes pulse { from { transform: scale(1); opacity: 0.5; } to { transform: scale(1.1); opacity: 0.8; } }
 
-    .hero-content { z-index: 10; }
+    .haze {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, transparent, rgba(5,8,16,0.8));
+      z-index: 5;
+    }
+
+    .hero-content { z-index: 10; position: relative; }
     .hero-title {
-      font-size: clamp(3.5rem, 10vw, 8.5rem);
+      font-size: clamp(3.2rem, 9vw, 8rem);
       font-weight: 900;
-      line-height: 0.85;
-      letter-spacing: -0.05em;
+      line-height: 0.9;
+      letter-spacing: -0.06em;
       margin-bottom: 2rem;
+      text-transform: uppercase;
     }
     .hero-title span {
-      background: linear-gradient(to right, var(--rose), var(--amber));
+      background: linear-gradient(to right, var(--rose), var(--orange), var(--amber));
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
+      display: block;
     }
     .pill {
       display: inline-block;
       padding: 0.6rem 1.6rem;
       background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.2);
       border-radius: 99px;
       font-size: 0.75rem;
       font-weight: 800;
-      letter-spacing: 0.4em;
+      letter-spacing: 0.45em;
       text-transform: uppercase;
       color: var(--rose);
       margin-bottom: 2.5rem;
+      backdrop-filter: blur(10px);
     }
 
     /* --- 雨滴特效 --- */
-    .rain-container { position: absolute; inset: 0; pointer-events: none; opacity: 0.25; }
-    .drop { position: absolute; width: 1px; height: 120px; background: linear-gradient(transparent, #60a5fa); top: -150px; animation: fall linear infinite; }
-    @keyframes fall { to { transform: translateY(115vh); } }
+    .rain-container { position: absolute; inset: 0; pointer-events: none; z-index: 6; }
+    .drop { 
+      position: absolute; 
+      width: 1.5px; 
+      height: 180px; 
+      background: linear-gradient(to bottom, transparent, rgba(96,165,250,0.6), transparent); 
+      top: -200px; 
+      animation: fall linear infinite; 
+    }
+    @keyframes fall { to { transform: translateY(120vh); } }
+
+    /* --- 学术图片样式 --- */
+    .img-wrap {
+      width: 100%;
+      border-radius: 2rem;
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      margin: 2rem 0;
+      border: 8px solid white;
+      background: #f1f5f9;
+      transition: transform 0.4s ease;
+    }
+    .img-wrap:hover { transform: scale(1.02); }
+    .img-wrap img { width: 100%; height: auto; display: block; filter: brightness(0.95); transition: 0.4s; }
+    .img-wrap:hover img { filter: brightness(1.05); }
+
+    .author-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    @media (max-width: 900px) { .author-grid { grid-template-columns: 1fr; } }
 
     /* --- 学术支柱 --- */
     .pillar-grid {
@@ -107,9 +149,9 @@
       border-radius: var(--radius-xl);
       box-shadow: var(--shadow);
       border-top: 6px solid var(--rose);
-      transition: 0.3s;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
-    .pillar-card:hover { transform: translateY(-12px); box-shadow: var(--shadow-lg); }
+    .pillar-card:hover { transform: translateY(-15px); box-shadow: var(--shadow-lg); }
     .pillar-card h4 { color: var(--muted); text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.2em; margin-bottom: 1rem; }
     .pillar-card h3 { font-size: 1.6rem; margin: 0 0 1rem; font-weight: 900; letter-spacing: -0.02em; }
 
@@ -119,50 +161,67 @@
       align-items: center;
       gap: 1.5rem;
       margin-bottom: 4rem;
-      padding: 1.5rem 2.5rem;
-      border-radius: 2rem;
+      padding: 1.8rem 2.5rem;
+      border-radius: 2.2rem;
       color: white;
       box-shadow: var(--shadow);
     }
     .icon-box { width: 50px; height: 50px; border-radius: 1rem; display: grid; place-items: center; font-size: 1.4rem; background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3); }
     .section-header h2 { font-size: 2.2rem; font-weight: 900; margin: 0; letter-spacing: -0.03em; text-transform: uppercase; font-style: italic; }
 
-    /* --- 时间轴 (Timeline) --- */
+    /* --- 叙述结构 (Plot Arc) --- */
+    .arc-container { display: flex; flex-direction: column; gap: 1.5rem; position: relative; }
+    .arc-step { 
+      display: flex; gap: 2rem; align-items: flex-start; background: white; 
+      padding: 2.5rem; border-radius: 2rem; box-shadow: var(--shadow); 
+      transition: 0.3s; border: 1px solid transparent;
+    }
+    .arc-step:hover { border-color: var(--blue); transform: translateX(10px); }
+    .arc-badge { 
+      flex-shrink: 0; width: 60px; height: 60px; border-radius: 1.2rem; 
+      background: var(--bg); color: white; display: grid; place-items: center; 
+      font-weight: 900; font-size: 1.2rem; 
+    }
+    .arc-content h3 { margin: 0 0 0.5rem; font-size: 1.5rem; font-weight: 900; color: var(--blue); }
+    .arc-label { font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.15em; color: var(--muted); margin-bottom: 0.2rem; display: block; }
+
+    /* --- 时间轴 --- */
     .timeline { position: relative; padding: 2rem 0; }
     .timeline::before { content: ""; position: absolute; left: 50%; top: 0; bottom: 0; width: 4px; background: var(--ring); transform: translateX(-50%); border-radius: 2px; }
     .t-item { position: relative; width: 50%; padding: 2rem 4rem; box-sizing: border-box; }
     .t-item.left { left: 0; text-align: right; }
     .t-item.right { left: 50%; text-align: left; }
-    .t-dot { position: absolute; width: 20px; height: 20px; background: var(--indigo); border: 4px solid white; border-radius: 50%; top: 50%; transform: translateY(-50%); z-index: 5; }
-    .t-item.left .t-dot { right: -12px; }
-    .t-item.right .t-dot { left: -12px; }
-    .t-year { font-weight: 900; color: var(--indigo); letter-spacing: 0.1em; font-size: 1.2rem; }
+    .t-dot { position: absolute; width: 22px; height: 22px; background: var(--indigo); border: 5px solid white; border-radius: 50%; top: 50%; transform: translateY(-50%); z-index: 5; box-shadow: var(--shadow); }
+    .t-item.left .t-dot { right: -13px; }
+    .t-item.right .t-dot { left: -13px; }
+    .t-year { font-weight: 900; color: var(--indigo); letter-spacing: 0.15em; font-size: 1.3rem; }
 
     /* --- 分析网格 --- */
     .grid { display: grid; gap: 2.5rem; }
     .grid-2 { grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); }
-    .card { background: white; padding: 3rem; border-radius: var(--radius-xl); box-shadow: var(--shadow); position: relative; }
-    .card .num { position: absolute; top: 2rem; right: 2rem; font-weight: 900; color: #f1f5f9; font-size: 3rem; line-height: 1; z-index: 0; }
+    .card { background: white; padding: 3.5rem; border-radius: var(--radius-xl); box-shadow: var(--shadow); position: relative; border: 1px solid #f1f5f9; transition: 0.3s; }
+    .card:hover { border-color: var(--rose); }
+    .card .num { position: absolute; top: 2rem; right: 2rem; font-weight: 900; color: #f1f5f9; font-size: 4rem; line-height: 1; z-index: 0; pointer-events: none; }
     .card h3 { position: relative; z-index: 1; font-size: 1.8rem; font-weight: 900; margin: 0 0 1.5rem; letter-spacing: -0.02em; }
-    .card p { position: relative; z-index: 1; color: var(--muted); font-size: 1.1rem; }
+    .card p { position: relative; z-index: 1; color: var(--muted); font-size: 1.15rem; line-height: 1.7; }
 
-    /* --- 角色分析 (Archetypes) --- */
+    /* --- 角色分析 --- */
     .char-split { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 1.5rem; background: white; padding: 1.5rem; border-radius: 3rem; box-shadow: var(--shadow); }
-    .char-side { padding: 4rem; border-radius: 2rem; }
+    .char-side { padding: 4.5rem; border-radius: 2.2rem; position: relative; }
     .char-side.light { background: #f8fafc; }
     .char-side.dark { background: #0f172a; color: white; }
-    .char-tag { font-weight: 900; text-transform: uppercase; letter-spacing: 0.2em; font-size: 0.7rem; margin-bottom: 1rem; display: block; }
+    .char-tag { font-weight: 900; text-transform: uppercase; letter-spacing: 0.25em; font-size: 0.75rem; margin-bottom: 1.2rem; display: block; }
 
     /* --- 反思区 --- */
-    .reflection { background: #0f172a; color: white; padding: 6rem; border-radius: 4rem; position: relative; overflow: hidden; }
-    .reflection blockquote { font-size: clamp(1.4rem, 2.5vw, 2.2rem); font-weight: 700; line-height: 1.4; margin: 0; font-style: italic; z-index: 5; position: relative; }
-    .reflection::after { content: "“"; position: absolute; top: -2rem; right: 4rem; font-size: 20rem; color: rgba(255,255,255,0.05); font-family: serif; }
+    .reflection { background: #0f172a; color: white; padding: 6.5rem; border-radius: 4.5rem; position: relative; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); }
+    .reflection blockquote { font-size: clamp(1.2rem, 2.2vw, 1.8rem); font-weight: 500; line-height: 1.6; margin: 0; font-style: italic; z-index: 5; position: relative; }
+    .reflection::after { content: "“"; position: absolute; top: -1rem; right: 3rem; font-size: 22rem; color: rgba(255,255,255,0.04); font-family: serif; pointer-events: none; }
 
     /* --- 视频播放器 --- */
-    .video-box { aspect-ratio: 16/9; background: #000; border-radius: 3.5rem; overflow: hidden; border: 15px solid white; box-shadow: var(--shadow-lg); position: relative; }
-    .video-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer; background: linear-gradient(rgba(15,23,42,0.6), rgba(15,23,42,0.9)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2000'); background-size: cover; z-index: 10; }
-    .play-btn { width: 100px; height: 100px; background: white; border-radius: 50%; display: grid; place-items: center; font-size: 2rem; color: var(--bg); transition: 0.3s; margin-bottom: 1.5rem; }
-    .video-overlay:hover .play-btn { transform: scale(1.15); background: var(--rose); color: white; }
+    .video-box { aspect-ratio: 16/9; background: #000; border-radius: 3.5rem; overflow: hidden; border: 16px solid white; box-shadow: var(--shadow-lg); position: relative; }
+    .video-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer; background: linear-gradient(rgba(15,23,42,0.5), rgba(15,23,42,0.85)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2000'); background-size: cover; background-position: center; z-index: 10; }
+    .play-btn { width: 110px; height: 110px; background: white; border-radius: 50%; display: grid; place-items: center; font-size: 2rem; color: var(--bg); transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); margin-bottom: 1.5rem; box-shadow: 0 0 40px rgba(0,0,0,0.3); }
+    .video-overlay:hover .play-btn { transform: scale(1.18); background: var(--rose); color: white; }
 
     /* 渐变背景 */
     .g-blue { background: linear-gradient(90deg, #1d4ed8, #312e81); }
@@ -170,12 +229,14 @@
     .g-rose { background: linear-gradient(90deg, #f43f5e, #9f1239); }
     .g-amber { background: linear-gradient(90deg, #f59e0b, #9a3412); }
     .g-cyan { background: linear-gradient(90deg, #06b6d4, #1e40af); }
+    .g-indigo { background: linear-gradient(90deg, #4f46e5, #312e81); }
 
     @media (max-width: 900px) {
       .timeline::before { left: 20px; }
-      .t-item { width: 100%; text-align: left !important; padding-left: 50px; padding-right: 0; }
+      .t-item { width: 100%; text-align: left !important; padding-left: 55px; padding-right: 0; }
       .t-dot { left: 10px !important; }
       .grid-2 { grid-template-columns: 1fr; }
+      .reflection { padding: 4rem 2.5rem; }
     }
   </style>
 </head>
@@ -184,12 +245,13 @@
   <!-- HERO -->
   <header class="hero">
     <div class="glow"></div>
+    <div class="haze"></div>
     <div class="rain-container" id="rain"></div>
     <div class="hero-content">
-      <div class="pill">ENG4U University Preparation English</div>
-      <h1 class="hero-title">VENUS<br><span>CHRONICLES</span></h1>
-      <p class="hero-sub" style="letter-spacing:0.4em; color:rgba(255,255,255,0.6);">A MULTIMODAL ACADEMIC THESIS</p>
-      <div style="margin-top:4rem; font-weight: 900; letter-spacing: 0.2em; border-bottom: 2px solid var(--rose); display: inline-block; padding-bottom: 5px;">BY OLIVER CEN</div>
+      <div class="pill">ENG4U Academic Thesis Portfolio</div>
+      <h1 class="hero-title">ALL SUMMER<br><span>IN A DAY</span></h1>
+      <p class="hero-sub" style="letter-spacing:0.5em; color:rgba(255,255,255,0.7); font-size: 1.1rem; font-weight: 700;">VENUS CHRONICLES: A DIGITAL DEFENSE</p>
+      <div style="margin-top:4rem; font-weight: 900; letter-spacing: 0.25em; border-bottom: 3px solid var(--rose); display: inline-block; padding-bottom: 8px; font-size: 1.1rem;">BY OLIVER CEN</div>
     </div>
   </header>
 
@@ -198,47 +260,88 @@
     <!-- THEMATIC PILLARS -->
     <section class="pillar-grid">
       <div class="pillar-card">
-        <h4>Conflict</h4>
+        <h4>The Core Conflict</h4>
         <h3>Individual vs. Mob</h3>
-        <p>The violent suppression of Margot is a sociological ritual that restores the group's "unity" at the cost of empathy.</p>
+        <p>The violent suppression of Margot is a sociological ritual that restores the group's "unity" at the cost of collective empathy.</p>
       </div>
       <div class="pillar-card" style="border-top-color: var(--amber);">
-        <h4>Psychology</h4>
+        <h4>The Psychology</h4>
         <h3>Existential Envy</h3>
-        <p>They hate Margot not because she is wrong, but because she remembers a truth they are incapable of seeing.</p>
+        <p>The mob hates Margot not because she is wrong, but because she possesses a transcendental truth they are incapable of seeing.</p>
       </div>
       <div class="pillar-card" style="border-top-color: var(--indigo);">
-        <h4>Literary Motif</h4>
+        <h4>The Motif</h4>
         <h3>The Silent Sun</h3>
-        <p>The 60-minute appearance of the sun serves as a catalyst for a collective "epiphany of guilt" and loss of innocence.</p>
+        <p>The 60-minute revelation of the sun serves as a catalyst for a collective loss of innocence and an irreversible epiphany of guilt.</p>
       </div>
     </section>
 
     <div class="space-y-huge section-padding">
       
-      <!-- 1. AUTHOR TIMELINE (From Version 1) -->
+      <!-- 1. AUTHOR TIMELINE -->
       <section id="biography">
         <div class="section-header g-blue">
           <div class="icon-box">🎓</div>
           <h2>Ray Bradbury Legacy</h2>
         </div>
-        <div class="timeline" id="timeline-box">
-          <!-- JS 注入 -->
+        <div class="author-grid">
+          <div class="img-wrap">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Ray_Bradbury_%281975%29.jpg/800px-Ray_Bradbury_%281975%29.jpg" alt="">
+          </div>
+          <div class="timeline" id="timeline-box"></div>
         </div>
       </section>
 
-      <!-- 2. PLOT & THEMATIC EXPLORATION (Merged) -->
-      <section id="analysis">
-        <div class="section-header g-rose">
-          <div class="icon-box">📌</div>
-          <h2>Thematic Exploration</h2>
+      <!-- 2. NARRATIVE STRUCTURE -->
+      <section id="plot-arc">
+        <div class="section-header g-indigo">
+          <div class="icon-box">📈</div>
+          <h2>Narrative Arc Analysis</h2>
         </div>
-        <div class="grid grid-2" id="analysis-grid">
-          <!-- JS 注入 -->
+        <div style="display:grid; grid-template-columns: 1.5fr 1fr; gap: 2rem; align-items: start;">
+          <div class="arc-container" id="arc-box"></div>
+          <div>
+            <div class="img-wrap">
+               <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1000" alt="">
+            </div>
+            <div class="img-wrap">
+               <img src="https://images.unsplash.com/photo-1464802686167-b939a67a06a1?q=80&w=1000" alt="[Image of the Sun]">
+            </div>
+          </div>
         </div>
       </section>
 
-      <!-- 3. CRITICAL LENSES (From Version 2) -->
+      <!-- 3. COMPARATIVE ANALYSIS -->
+      <section id="comparative">
+        <div class="section-header g-dark">
+          <div class="icon-box">📕</div>
+          <h2>Thematic Echoes: The Landlady</h2>
+        </div>
+        <div class="grid grid-2">
+          <div class="card">
+            <div class="num">01</div>
+            <h3>Billy Weaver: The Innocent Victim</h3>
+            <p>Similar to Margot, Billy is an outsider entering a new society. His experience reminds us that kindness can be easily exploited. </p>
+          </div>
+          <div class="card" style="padding: 0; overflow: hidden; border: none;">
+             <div class="img-wrap" style="margin: 0; border: none; height: 100%;">
+                <img src="https://images.unsplash.com/photo-1518780664697-55e3ad937233?q=80&w=1000" alt="" style="height: 100%; object-fit: cover;">
+             </div>
+          </div>
+          <div class="card">
+            <div class="num">02</div>
+            <h3>The Boarding House: A Disguised Trap</h3>
+            <p>The setting of Bath Town symbolizes a trap disguised as safety. Warm furniture and a fireplace evoke trust, paralleling the "normalcy" that hides brutality.</p>
+          </div>
+          <div class="card">
+            <div class="num">03</div>
+            <h3>Irreversible Consequences</h3>
+            <p>Once blind trust is exploited, the cost is often life itself. This mirrors Bradbury's theme: the emotional damage to the victim is permanent.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. CRITICAL LENSES -->
       <section id="lenses">
         <div class="section-header g-cyan">
           <div class="icon-box">👁️</div>
@@ -248,65 +351,27 @@
           <div class="card">
             <div class="num">01</div>
             <h3 style="color:var(--cyan)">Sociological Perspective</h3>
-            <p><strong>Groupthink & Deindividuation:</strong> On Venus, individuality is a threat. William acts as the "Agent of Conformity," turning a classroom into a predatory pack. This mirrors the bystander effect, where collective silence becomes active cruelty.</p>
+            <p><strong>Groupthink & Deindividuation:</strong> On Venus, individuality is a threat. William acts as the "Agent of Conformity." The bystander effect becomes active cruelty.</p>
           </div>
           <div class="card">
             <div class="num">02</div>
             <h3 style="color:var(--indigo)">Psychoanalytic Perspective</h3>
-            <p><strong>The Repression of Desires:</strong> The children's hatred for Margot is a defense mechanism. She represents their own repressed longing for the sun; by locking her away, they are symbolically locking away their own pain of forgetting.</p>
+            <p><strong>The Repression of Desires:</strong> The children repress their longing for the sun by attacking Margot. They are symbolically burying their own pain of forgetting.</p>
           </div>
         </div>
       </section>
 
-      <!-- 4. CHARACTER ARCHETYPES (From Version 2) -->
-      <section id="archetypes">
-        <div class="section-header g-amber">
-          <div class="icon-box">👥</div>
-          <h2>Character Archetypes</h2>
-        </div>
-        <div class="char-split">
-          <div class="char-side light">
-            <span class="char-tag" style="color:var(--rose)">The Outcast / Truth-Bearer</span>
-            <h3 style="font-size: 2.2rem; margin: 0.5rem 0;">Margot</h3>
-            <p>Pale, frail, and "like a photograph dusted from an old album." She represents the <strong>Soul</strong> in a mechanized world. Her memory of Earth is a spiritual burden that the others cannot tolerate.</p>
-          </div>
-          <div class="char-side dark">
-            <span class="char-tag" style="color:var(--indigo)">The Antagonist / Collective</span>
-            <h3 style="font-size: 2.2rem; margin: 0.5rem 0;">William & The Mob</h3>
-            <p>They are the <strong>Body</strong> without a soul. Acting as a single organism, they use physical force to compensate for their lack of transcendental memory. Their identity exists only in their shared ignorance.</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- 5. SYMBOLIC DUALITY (Literary Craft) -->
-      <section id="craft">
-        <div class="section-header g-dark">
-          <div class="icon-box">🖋️</div>
-          <h2>Literary Craftsmanship</h2>
-        </div>
-        <div class="grid grid-2">
-          <div class="card" style="border-left: 8px solid var(--blue);">
-            <h3>Pathetic Fallacy</h3>
-            <p>The "conveyor belt" of rain is not just weather; it is the physical manifestation of the children's psychological erosion. The rain washes away their capacity for empathy over seven relentless years.</p>
-          </div>
-          <div class="card" style="border-left: 8px solid var(--amber);">
-            <h3>Symbolic Duality</h3>
-            <p><strong>The Closet vs. The Jungle:</strong> The closet is a womb of darkness where Margot is "buried alive," while the Venusian jungle is a chaotic, rubbery maze. Both represent the hostility of an environment devoid of light.</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- 6. REFLECTION (Deep Conclusion) -->
+      <!-- 5. REFLECTION -->
       <section id="reflection">
         <div class="reflection">
           <blockquote id="reflection-text"></blockquote>
-          <div style="margin-top: 3rem; color: var(--rose); font-weight: 900; letter-spacing: 0.3em; text-transform: uppercase; font-size: 0.8rem;">
-            Academic Conclusion — The Weight of Silence
+          <div style="margin-top: 3rem; color: var(--rose); font-weight: 900; letter-spacing: 0.35em; text-transform: uppercase; font-size: 0.85rem;">
+            Personal Connection & Academic Conclusion
           </div>
         </div>
       </section>
 
-      <!-- 7. DEFENSE VIDEO -->
+      <!-- 6. DEFENSE VIDEO -->
       <section id="media">
         <div class="section-header g-blue">
           <div class="icon-box">▶</div>
@@ -315,8 +380,8 @@
         <div class="video-box" id="v-container">
           <div class="video-overlay" onclick="startVideo()">
             <div class="play-btn">▶</div>
-            <h3 style="color:white; letter-spacing: 0.1em; font-weight: 900;">LAUNCH MULTIMODAL ANALYSIS</h3>
-            <p style="color:rgba(255,255,255,0.5); font-family: monospace;">OLIVER_CEN_THESIS_V4.MP4</p>
+            <h3 style="color:white; letter-spacing: 0.15em; font-weight: 900; text-transform: uppercase;">Launch Multimodal Analysis</h3>
+            <p style="color:rgba(255,255,255,0.6); font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; letter-spacing: 0.1em;">OLIVER_CEN_THESIS_FINAL.MP4</p>
           </div>
         </div>
       </section>
@@ -325,72 +390,73 @@
   </main>
 
   <footer style="padding: 10rem 0 6rem; background: white; text-align: center; border-top: 1px solid var(--ring);">
-    <h2 style="font-weight: 900; letter-spacing: -0.05em; font-size: 3.5rem; margin: 0;">Oliver Cen<span>.</span></h2>
-    <div style="color: var(--muted); font-weight: 800; letter-spacing: 0.4em; text-transform: uppercase; margin-top: 1rem;">ENG4U Academic Portfolio</div>
-    <div style="margin-top: 4rem; display: flex; justify-content: center; gap: 3rem; font-weight: 900; font-size: 0.7rem; color: var(--ring);">
-       <span>PLOT</span> <span>SOCIOLOGY</span> <span>ARCHETYPES</span> <span>REFLECTION</span>
-    </div>
+    <h2 style="font-weight: 900; letter-spacing: -0.05em; font-size: 3.5rem; margin: 0; text-transform: uppercase;">Oliver Cen<span>.</span></h2>
+    <div style="color: var(--muted); font-weight: 800; letter-spacing: 0.45em; text-transform: uppercase; margin-top: 1.2rem; font-size: 0.9rem;">Digital Thesis Portfolio — ENG4U Culminating Project</div>
   </footer>
 
   <script>
-    // --- 完整整合的数据集 ---
     const FULL_DATA = {
       timeline: [
         { year: "1920", event: "Birth of a Visionary", detail: "Ray Bradbury was born in Illinois. His early love for silent films would later shape his vivid prose." },
-        { year: "1950", event: "Martian Chronicles", detail: "A breakthrough collection that used sci-fi to explore human prejudice and social anxiety." },
-        { year: "1954", event: "All Summer in a Day", detail: "Published at the peak of the Cold War, reflecting the era's fear of the 'unthinking mob'." },
-        { year: "2012", event: "Infinite Legacy", detail: "Died as a master of American literature, having bridged the gap between pulp and academia." }
+        { year: "1950", event: "Martian Chronicles", detail: "A breakthrough collection exploring human prejudice via a sci-fi lens." },
+        { year: "1954", event: "All Summer in a Day", detail: "Reflecting Cold War existential dread and the fear of homogenized mobs." },
+        { year: "2012", event: "Infinite Legacy", detail: "Died as a master who successfully bridged sci-fi and high academia." }
+      ],
+      plotArc: [
+        { label: "Exposition", title: "The Gray Prison", desc: "Setting the scene on a rainy Venus where children haven't seen the sun in 7 years. Introducing Margot, the outsider from Earth who remembers the light." },
+        { label: "Rising Action", title: "Rising Jealousy", desc: "Margot's isolation grows. The children, led by William, mock her. Tensions peak, leading them to lock Margot in a closet." },
+        { label: "Climax", title: "The Golden Hour", desc: "The rain stops. The sun emerges. For one hour, the children experience 'true life'—nature, warmth, and joy—forgetting Margot entirely." },
+        { label: "Falling Action", title: "Return of Gray", desc: "A cold drop of rain falls. The children trudge back into the underground, joy replaced by a heavy realization of their crime." },
+        { label: "Resolution", title: "Epiphany of Silence", desc: "The children remember Margot and unlock the closet. The door opens to a devastating silence, marking their permanent transition from innocence to guilt." }
       ],
       analysis: [
-        { 
-          head: "The Rainy Stasis", 
-          body: "The rain acts as a sensory prison. Bradbury uses kinetic imagery to show how environment dictates morality; without light, compassion simply withers." 
-        },
-        { 
-          head: "The Crucial Betrayal", 
-          body: "Margot's knowledge of the sun sparks violent jealousy. Locking her in the closet is a symbolic 'murder' of the only witness to beauty." 
-        },
-        { 
-          head: "Epiphany of Guilt", 
-          body: "The final scene—the slow walk to the closet—marks the loss of innocence. Their collective silence is the true tragedy of the story." 
-        },
-        { 
-          head: "The Tall Poppy Syndrome", 
-          body: "Margot is 'cut down' because she is different. The group’s action is a violent attempt to equalize everyone to the level of the average." 
-        }
+        { head: "The Rainy Stasis", body: "The rain acts as a sensory prison. Bradbury uses kinetic imagery to show how environment dictates morality; without light, compassion simply withers." },
+        { head: "The Crucial Betrayal", body: "Margot's knowledge of the sun sparks violent jealousy. Locking her in the closet is a symbolic 'murder' of the only witness to beauty." },
+        { head: "Epiphany of Guilt", body: "The final scene marking the loss of innocence. Their collective silence is the true tragedy of the story." },
+        { head: "The Tall Poppy Syndrome", body: "Margot is 'cut down' because she is different. The group’s action is a violent attempt to equalize everyone to the average." }
       ],
-      reflection: "Bradbury doesn't just write about a planet; he writes about the architecture of the human heart. As an ENG4U student, I recognize that 'the closet' exists in our modern echo chambers—it's built whenever we silence an individual for having seen a different 'sun'. True education is the process of learning how to value the 'other', ensuring that the door never locks. Margot’s silence at the end is a permanent stain on the group's conscience, a reminder that some acts of cruelty can never be fully washed away by the rain.",
+      reflection: "Both 'All Summer in a Day' and 'The Landlady' resonate with me as an international student in Canada. Like Billy Weaver or Margot, I arrived in a strange city with full trust in my environment. When I first moved into a host family, they were friendly and polite, making me feel accepted. However, when I announced my transfer, the atmosphere turned hostile. I experienced verbal abuse and isolation, eventually discovering that my cash had been stolen. This experience taught me a hard lesson: superficial friendliness does not equal true security. Just like Billy, I noticed small warning signs—changes in attitude—but chose to ignore them to avoid tension. This 'blind trust' is a risk. These stories serve as a powerful warning: in an unfamiliar environment, maintaining politeness does not mean giving up vigilance. Critical thinking and paying attention to warning signs are essential for survival in a world where danger often hides behind a gentle smile.",
       youtubeId: "MhI0O99K864"
     };
 
-    // --- 动画与渲染逻辑 ---
     function init() {
-      // 1. 雨滴
       const r = document.getElementById('rain');
-      for(let i=0; i<85; i++) {
+      for(let i=0; i<120; i++) {
         const d = document.createElement('div');
         d.className = 'drop';
         d.style.left = Math.random() * 100 + 'vw';
-        d.style.animationDuration = (0.5 + Math.random()) + 's';
-        d.style.animationDelay = Math.random() * 2 + 's';
+        d.style.height = (120 + Math.random() * 80) + 'px';
+        d.style.animationDuration = (0.3 + Math.random() * 0.7) + 's';
+        d.style.animationDelay = Math.random() * 4 + 's';
         r.appendChild(d);
       }
 
-      // 2. 时间轴
       const tb = document.getElementById('timeline-box');
       FULL_DATA.timeline.forEach((item, idx) => {
-        const div = document.createElement('div');
-        div.className = `t-item ${idx%2===0?'left':'right'}`;
-        div.innerHTML = `
-          <div class="t-dot"></div>
-          <div class="t-year">${item.year}</div>
-          <h3 style="margin: 0.5rem 0;">${item.event}</h3>
-          <p style="color:var(--muted); font-size:0.95rem;">${item.detail}</p>
+        tb.innerHTML += `
+          <div class="t-item ${idx%2===0?'left':'right'}">
+            <div class="t-dot"></div>
+            <div class="t-year">${item.year}</div>
+            <h3 style="margin: 0.6rem 0; font-weight: 900; font-size: 1.5rem;">${item.event}</h3>
+            <p style="color:var(--muted); font-size:1rem;">${item.detail}</p>
+          </div>
         `;
-        tb.appendChild(div);
       });
 
-      // 3. 分析网格
+      const ab = document.getElementById('arc-box');
+      FULL_DATA.plotArc.forEach((step, idx) => {
+        ab.innerHTML += `
+          <div class="arc-step">
+            <div class="arc-badge">${idx + 1}</div>
+            <div class="arc-content">
+              <span class="arc-label">${step.label}</span>
+              <h3>${step.title}</h3>
+              <p style="color:var(--muted); margin:0;">${step.desc}</p>
+            </div>
+          </div>
+        `;
+      });
+
       const ag = document.getElementById('analysis-grid');
       FULL_DATA.analysis.forEach((item, idx) => {
         ag.innerHTML += `
@@ -402,13 +468,11 @@
         `;
       });
 
-      // 4. 反思
       document.getElementById('reflection-text').innerText = FULL_DATA.reflection;
     }
 
     function startVideo() {
-      const v = document.getElementById('v-container');
-      v.innerHTML = `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/${FULL_DATA.youtubeId}?autoplay=1&modestbranding=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
+      document.getElementById('v-container').innerHTML = `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/${FULL_DATA.youtubeId}?autoplay=1&modestbranding=1&rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
     }
 
     window.onload = init;
