@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ALL SUMMER IN A DAY — Deep Literary Digital Thesis</title>
   <style>
     :root{
@@ -98,7 +98,7 @@
     .drop { position: absolute; width: 1.5px; height: 180px; background: linear-gradient(to bottom, transparent, rgba(96,165,250,0.6), transparent); top: -200px; animation: fall linear infinite; }
     @keyframes fall { to { transform: translateY(120vh); } }
 
-    /* --- Images --- */
+    /* --- Academic Images --- */
     .img-wrap {
       width: 100%;
       border-radius: 2rem;
@@ -135,7 +135,7 @@
 
     /* --- Plot Arc --- */
     .arc-container { display: flex; flex-direction: column; gap: 1.5rem; }
-    .arc-step { display: flex; gap: 2rem; align-items: flex-start; background: white; padding: 2.5rem; border-radius: 2rem; box-shadow: var(--shadow); transition: 0.3s; border-left: 10px solid var(--indigo); }
+    .arc-step { display: flex; gap: 2rem; align-items: flex-start; background: white; padding: 3rem; border-radius: 2rem; box-shadow: var(--shadow); transition: 0.3s; border-left: 10px solid var(--indigo); }
     .arc-badge { flex-shrink: 0; width: 60px; height: 60px; border-radius: 1.2rem; background: var(--bg); color: white; display: grid; place-items: center; font-weight: 900; font-size: 1.2rem; }
 
     /* --- Video Player --- */
@@ -157,7 +157,7 @@
     .reflection blockquote { font-size: clamp(1.1rem, 2vw, 1.4rem); font-weight: 400; line-height: 1.8; margin: 0; z-index: 5; position: relative; color: #cbd5e1; }
     .reflection b { color: var(--rose); font-weight: 700; }
 
-    /* Theme Colors */
+    /* Themes Colors */
     .g-blue { background: linear-gradient(90deg, #1d4ed8, #312e81); }
     .g-rose { background: linear-gradient(90deg, #f43f5e, #9f1239); }
     .g-amber { background: linear-gradient(90deg, #f59e0b, #9a3412); }
@@ -188,11 +188,11 @@
   <main class="container section-padding">
     <div class="space-y-huge">
       
-      <!-- 1. INTRO & AUTHOR -->
+      <!-- 1. AUTHOR & SETTING -->
       <section id="biography">
         <div class="section-header g-blue">
           <div class="icon-box">🎓</div>
-          <h2>Ray Bradbury & The Venusian Setting</h2>
+          <h2>Ray Bradbury & The Venusian World</h2>
         </div>
         <div class="author-grid" style="display: grid; grid-template-columns: 1fr 1.5fr; gap: 3rem; align-items: center;">
           <div class="img-wrap">
@@ -201,17 +201,17 @@
           <div id="timeline-box" style="display: flex; flex-direction: column; gap: 2rem;">
             <div class="card">
               <h3>The Setting: A Sensory Prison</h3>
-              <p>Ray Bradbury’s Venus is not a planet of adventure, but a world of psychological amnesia. The relentless rain for seven years acts as a sensory prison, washing away the children's memories of "real" life and truth. In this environment, environment dictates morality—without light, compassion simply withers away.</p>
+              <p>Ray Bradbury’s Venus is not a planet of adventure, but a world of psychological amnesia. The relentless rain for seven years acts as a sensory prison, washing away the children's memories of "real" life and truth. In this environment, the capacity for compassion simply withers away, replaced by the cold, mechanical cruelty of the mob.</p>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- 2. NARRATIVE ARC ANALYSIS -->
+      <!-- 2. PLOT ARC ANALYSIS (Freytag's Pyramid) -->
       <section id="plot-arc">
         <div class="section-header g-indigo">
           <div class="icon-box">📈</div>
-          <h2>Narrative Structure Analysis</h2>
+          <h2>Detailed Plot Arc: The Venusian Pyramid</h2>
         </div>
         <div style="display:grid; grid-template-columns: 1.5fr 1fr; gap: 3rem; align-items: start;">
           <div class="arc-container" id="arc-box"></div>
@@ -219,82 +219,84 @@
         </div>
       </section>
 
-      <!-- 3. THEMATIC MASTERY -->
-      <section id="themes">
-        <div class="section-header g-rose">
-          <div class="icon-box">💎</div>
-          <h2>Detailed Literary Themes</h2>
-        </div>
-        <div class="grid grid-3">
-          <div class="card">
-            <span class="highlight-text">Core Theme I</span>
-            <h3>The Cruelty of Jealousy</h3>
-            <p>The children's hatred for Margot is not based on her actions, but on her <b>experiences</b>. She remembers the sun; they don't. This "existential envy" drives them to punish her for possessing a truth they lack. Jealousy here acts as a dehumanizing force that justifies violence.</p>
-          </div>
-          <div class="card">
-            <span class="highlight-text">Core Theme II</span>
-            <h3>Mob Mentality & Deindividuation</h3>
-            <p>Individual conscience vanishes in a crowd. The closet scene demonstrates how a collective can perform evil with a sense of immunity. Responsibility is shared and thus diluted; not a single child objects to William’s plan, creating a "bubble of immunity" for cruelty.</p>
-          </div>
-          <div class="card">
-            <span class="highlight-text">Core Theme III</span>
-            <h3>The Loss of Innocence</h3>
-            <p>The transition from the golden hour of the sun back to the gray silence of the rain marks the children's permanent loss of innocence. Their "epiphany of guilt" at the end is a realization that some acts of cruelty are as irreversible as the rain itself.</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- 4. SYMBOLISM & CONFLICT -->
-      <section id="analysis">
-        <div class="section-header g-amber">
-          <div class="icon-box">✨</div>
-          <h2>Symbolism & Conflict Anatomy</h2>
+      <!-- 3. CHARACTER CHARACTERISTICS ANALYSIS -->
+      <section id="characteristics">
+        <div class="section-header g-blue">
+          <div class="icon-box">👥</div>
+          <h2>Character Characteristics Analysis</h2>
         </div>
         <div class="grid grid-2">
           <div class="card">
+            <span class="highlight-text">The Protagonist</span>
+            <h3>Margot: The Frail Prophet</h3>
+            <p>Margot is described as a "ghost" or a "photograph dusted from an old album." Her primary characteristic is her <b>Spiritual Isolation</b>. Unlike the amnesiac group, she possesses the "Truth" of Earth. Her fragility is a manifestation of her sensory starvation; she is the "Tall Poppy" whose superior memory makes her a target for those who fear what they cannot remember.</p>
+          </div>
+          <div class="card" style="border-top: 5px solid var(--rose);">
+            <span class="highlight-text">The Antagonist</span>
+            <h3>William & The Homogenized Mob</h3>
+            <p>William represents the <b>Predatory Instinct</b> that thrives in a leaderless society. The defining characteristic of the class is <b>Existential Envy</b>. They lack individual identities, acting as a single collective entity. This deindividuation allows them to perform acts of cruelty with a sense of immunity, as individual conscience vanishes within the mob.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. THEMATIC MASTERY & CONFLICTS -->
+      <section id="themes">
+        <div class="section-header g-rose">
+          <div class="icon-box">💎</div>
+          <h2>Themes & Conflicts</h2>
+        </div>
+        <div class="grid grid-2">
+          <div class="card">
+            <span class="highlight-text">Core Conflict</span>
+            <h3>Man vs. Society (The Mob)</h3>
+            <p>The primary conflict is between Margot (the individual) and the class (the collective). By locking Margot in the closet, the group performs a sociological ritual to maintain their shared amnesia. It demonstrates how a collective can perform acts of cruelty that no individual would dare alone.</p>
+          </div>
+          <div class="card">
+            <span class="highlight-text">Thematic Center</span>
+            <h3>The Cruelty of Jealousy</h3>
+            <p>Their hatred is not based on Margot's actions, but on her <b>experiences</b>. She remembers the sun; they don't. This envy drives them to punish her for possessing a truth they lack. Jealousy here acts as a dehumanizing force that justifies the sacrifice of the outsider.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. SYMBOLISM -->
+      <section id="symbols">
+        <div class="section-header g-amber">
+          <div class="icon-box">✨</div>
+          <h2>Symbolic Atlas</h2>
+        </div>
+        <div class="grid grid-3">
+          <div class="card">
             <div class="num">☀️</div>
-            <h3>Symbol: The Sun</h3>
-            <p>The sun represents divinity, truth, and spiritual awakening. It is a "flower that blooms for just one hour." For Margot, it is life itself; for the other children, it is a joke or a myth until it finally exposes their smallness and their sin.</p>
+            <h3>The Sun</h3>
+            <p>Represents divinity, spiritual awakening, and truth. It is a "flower that blooms for just one hour," symbolizing how fleeting truth is in a dark world.</p>
+          </div>
+          <div class="card">
+            <div class="num">🌧️</div>
+            <h3>The Rain</h3>
+            <p>A "conveyor belt" of psychological amnesia. It washes away empathy, identity, and compassion over seven years, creating a mindless mob.</p>
           </div>
           <div class="card">
             <div class="num">🚪</div>
-            <h3>Conflict: Man vs. Society</h3>
-            <p>Margot is the "Tall Poppy"—different, gifted, and superior in her memories. The group’s action is a violent attempt to "equalize" everyone by bringing the superior down to the level of the average amnesiac. It is a war between memory and forgetting.</p>
+            <h3>The Closet</h3>
+            <p>Symbolizes the suppression of the "Other." It is a womb of darkness where the mob "buries" the truth they are not yet ready to face.</p>
           </div>
         </div>
       </section>
 
-      <!-- 5. CHARACTER PROFILES -->
-      <section id="characters">
-        <div class="section-header g-cyan">
-          <div class="icon-box">👥</div>
-          <h2>Character Archetypes</h2>
-        </div>
-        <div class="char-split" style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
-          <div class="card" style="border-top: 8px solid var(--rose);">
-            <span class="highlight-text">The Martyr / Outsider</span>
-            <h3>Margot</h3>
-            <p>Pale, frail, and withdrawn. She is the only link to "Earthly Truth." Her physical fading mirrors the psychological toll of isolation. She carries the burden of truth that the group is not yet ready to face.</p>
-          </div>
-          <div class="card" style="border-top: 8px solid var(--indigo);">
-            <span class="highlight-text">The Agent of Conformity</span>
-            <h3>William & The Mob</h3>
-            <p>William represents the predatory leader who weaponizes the group's fear and jealousy. The other children, acting as a single homogenized mass, follow him to avoid the pain of their own inadequacy.</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- 6. PERSONAL REFLECTION (ADAPTED) -->
+      <!-- 6. PERSONAL CONNECTION (REVISED WITH RUMOR STORY) -->
       <section id="reflection">
-        <div class="section-header g-dark">
+        <div class="section-header g-cyan">
           <div class="icon-box">💬</div>
           <h2>Personal Connection: The "Closet" in Reality</h2>
         </div>
         <div class="reflection">
           <blockquote id="reflection-text">
-            <b>
-This story resonated with my personal experience51. In my previous high school, there was a female classmate who was always the target of all kinds of spreading rumors52. For instance, there was a claim that she got pregnant at the age of fourteen53. Many classmates in her grade would always sneak into her class during breaks to peek at her, which caused her a lot of trouble54. Eventually, she had to transfer schools, but in the end, it turned out that all these were rumors55. She actually had a boyfriend she was dating in class and happened to go to the hospital for a regular check-up when she was seen by a classmate, which led to the rumor56. This experience reflects the feelings of being excluded and misunderstood57. Just like Margot, when irresponsible impulsive remarks spread or a group of impulsive behaviors occur, the victims often bear unimaginable pressure58. This experience and story reminds me of the importance of empathy and kindness, especially when others are at their most vulnerable59. Furthermore, people should always be responsible for their own behavior and the impact on others60.
-</blockquote>
+            <b>This story resonated deeply with my personal experience.</b> In my previous high school, there was a female classmate who was always the target of all kinds of spreading rumors. For instance, there was a claim that she got pregnant at the age of fourteen. Many classmates in her grade would always sneak into her class during breaks to peek at her, which caused her a lot of trouble. <br><br>
+            Eventually, she had to transfer schools, but in the end, it turned out that all these were rumors. She actually had a boyfriend she was dating in class and happened to go to the hospital for a regular check-up when she was seen by a classmate, which led to the rumor. <br><br>
+            <b>This experience reflects the feelings of being excluded and misunderstood.</b> Just like Margot, when irresponsible impulsive remarks spread or a group of impulsive behaviors occur, the victims often bear unimaginable pressure. <br><br>
+            Furthermore, this parallels my own experience as an international student in Canada. When I moved into a host family, everything seemed friendly. But when I announced my transfer, the atmosphere turned hostile—I was yelled at and abused in a language I was still learning. Being a minor without other friends, <b>I felt exactly like Margot in that closet</b>, isolated and enduring a hostile atmosphere. These experiences remind me of the importance of <b>empathy and kindness</b>, especially when others are at their most vulnerable. People should always be responsible for their own behavior and the impact on others.
+          </blockquote>
         </div>
       </section>
 
@@ -308,7 +310,7 @@ This story resonated with my personal experience51. In my previous high school, 
           <div class="video-overlay" id="v-overlay">
             <div class="play-btn">▶</div>
             <h3 style="color:white; letter-spacing: 0.15em; font-weight: 900; text-transform: uppercase; margin-top: 1.5rem;">Launch Video Analysis</h3>
-            <p style="color:rgba(255,255,255,0.6); font-family: ui-monospace, monospace;">OLIVER_CEN_DEFENSE_V6.MP4</p>
+            <p style="color:rgba(255,255,255,0.6); font-family: ui-monospace, monospace;">OLIVER_CEN_THESIS_FINAL.MP4</p>
           </div>
           <div id="video-iframe-container" style="width: 100%; height: 100%;"></div>
         </div>
@@ -325,17 +327,36 @@ This story resonated with my personal experience51. In my previous high school, 
   <script>
     const FULL_DATA = {
       plotArc: [
-        { label: "Exposition", title: "The Gray Prison", desc: "Setting the scene on a rainy Venus where children haven't seen the sun in 7 years. Introducing Margot, the outsider from Earth who remembers the light." },
-        { label: "Rising Action", title: "The Rising Jealousy", desc: "Margot's isolation grows. The children mock her memories based on scientists' predictions. Tensions peak, and they lock her in a closet." },
-        { label: "Climax", title: "The Golden Hour", desc: "The rain stops. The sun emerges in flaming bronze. For one hour, the children experience 'true life'—nature, warmth, and joy—forgetting Margot entirely." },
-        { label: "Falling Action", title: "The Return of Gray", desc: "A cold drop falls. The sun fades. The children trudge back into the underground, joy replaced by a heavy, growing realization of their crime." },
-        { label: "Resolution", title: "Epiphany of Silence", desc: "They remember Margot and walk slowly to the closet. The door opens to a devastating silence, marking their transition from amnesia to guilt." }
+        { 
+          label: "Exposition", 
+          title: "The Gray Sensory Prison", 
+          desc: "Venus is established as a world of continuous rain. Children live in underground tunnels, having never seen the sun. Margot, from Earth, is the only one who remembers the light, creating a stark contrast." 
+        },
+        { 
+          label: "Rising Action", 
+          title: "The Rising Tide of Jealousy", 
+          desc: "Tensions peak as the sun's appearance nears. Margot is mocked for her sun poem. William weaponizes the mob's envy, and the children force Margot into a dark closet, locking her away." 
+        },
+        { 
+          label: "Climax", 
+          title: "The Golden Hour of Enlightenment", 
+          desc: "The rain stops and the sun emerges in flaming bronze. The children experience the sensory overload of nature—warmth and joy—forgetting Margot entombed in darkness." 
+        },
+        { 
+          label: "Falling Action", 
+          title: "The Return of Gray", 
+          desc: "A cold drop signals the end. The rain returns violently. As the children trudge back, their joy is replaced by a heavy, suffocating realization of their crime." 
+        },
+        { 
+          label: "Resolution", 
+          title: "The Epiphany of Guilt", 
+          desc: "They walk slowly back to the closet. The door is unlocked in devastating stillness. Margot's silence marks their transition from innocence to permanent guilt." 
+        }
       ],
       youtubeId: "0UwkTzUclOg"
     };
 
     function init() {
-      // Rain Effect
       const r = document.getElementById('rain');
       for(let i=0; i<120; i++) {
         const d = document.createElement('div');
@@ -347,7 +368,6 @@ This story resonated with my personal experience51. In my previous high school, 
         r.appendChild(d);
       }
 
-      // Plot Arc Rendering
       const ab = document.getElementById('arc-box');
       FULL_DATA.plotArc.forEach((step, idx) => {
         ab.innerHTML += `
@@ -363,7 +383,6 @@ This story resonated with my personal experience51. In my previous high school, 
       });
     }
 
-    // Fixed Video Function
     function startVideo() {
       const overlay = document.getElementById('v-overlay');
       const container = document.getElementById('video-iframe-container');
