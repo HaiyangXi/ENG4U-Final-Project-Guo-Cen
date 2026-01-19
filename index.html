@@ -1,10 +1,9 @@
-
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ALL SUMMER IN A DAY — Ultimate Academic Digital Thesis</title>
+  <title>ALL SUMMER IN A DAY — Deep Literary Digital Thesis</title>
   <style>
     :root{
       --bg: #050810;
@@ -33,10 +32,10 @@
       background: #f8fafc;
       background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
       background-size: 32px 32px;
-      line-height: 1.6;
+      line-height: 1.8;
     }
 
-    /* --- 布局结构 --- */
+    /* --- Layout --- */
     .container { width: min(1200px, 92vw); margin: 0 auto; }
     .section-padding { padding: 8rem 0; }
     .space-y-huge { display: flex; flex-direction: column; gap: 10rem; }
@@ -94,12 +93,12 @@
       backdrop-filter: blur(10px);
     }
 
-    /* --- 雨滴特效 --- */
+    /* --- Rain Effect --- */
     .rain-container { position: absolute; inset: 0; pointer-events: none; z-index: 6; }
     .drop { position: absolute; width: 1.5px; height: 180px; background: linear-gradient(to bottom, transparent, rgba(96,165,250,0.6), transparent); top: -200px; animation: fall linear infinite; }
     @keyframes fall { to { transform: translateY(120vh); } }
 
-    /* --- 图片与装饰 --- */
+    /* --- Images --- */
     .img-wrap {
       width: 100%;
       border-radius: 2rem;
@@ -113,7 +112,7 @@
     .img-wrap img { width: 100%; height: auto; display: block; filter: brightness(0.95); transition: 0.4s; }
     .img-wrap:hover { transform: scale(1.02); }
 
-    /* --- 模块标题 --- */
+    /* --- Section Headers --- */
     .section-header {
       display: flex;
       align-items: center; gap: 1.5rem; margin-bottom: 4rem;
@@ -122,7 +121,7 @@
     .icon-box { width: 50px; height: 50px; border-radius: 1rem; display: grid; place-items: center; font-size: 1.4rem; background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3); }
     .section-header h2 { font-size: 2.2rem; font-weight: 900; margin: 0; letter-spacing: -0.03em; text-transform: uppercase; font-style: italic; }
 
-    /* --- 核心分析网格 --- */
+    /* --- Cards Grid --- */
     .grid { display: grid; gap: 2.5rem; }
     .grid-2 { grid-template-columns: repeat(auto-fit, minmax(480px, 1fr)); }
     .grid-3 { grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); }
@@ -136,10 +135,10 @@
 
     /* --- Plot Arc --- */
     .arc-container { display: flex; flex-direction: column; gap: 1.5rem; }
-    .arc-step { display: flex; gap: 2rem; align-items: flex-start; background: white; padding: 2.5rem; border-radius: 2rem; box-shadow: var(--shadow); transition: 0.3s; }
+    .arc-step { display: flex; gap: 2rem; align-items: flex-start; background: white; padding: 2.5rem; border-radius: 2rem; box-shadow: var(--shadow); transition: 0.3s; border-left: 10px solid var(--indigo); }
     .arc-badge { flex-shrink: 0; width: 60px; height: 60px; border-radius: 1.2rem; background: var(--bg); color: white; display: grid; place-items: center; font-weight: 900; font-size: 1.2rem; }
 
-    /* --- 视频播放器修复 --- */
+    /* --- Video Player --- */
     .video-box { 
       aspect-ratio: 16/9; background: #000; border-radius: 3.5rem; 
       overflow: hidden; border: 16px solid white; box-shadow: var(--shadow-lg); 
@@ -153,12 +152,12 @@
     .play-btn { width: 110px; height: 110px; background: white; border-radius: 50%; display: grid; place-items: center; font-size: 2.5rem; color: var(--bg); transition: 0.4s; }
     .video-box:hover .play-btn { transform: scale(1.15); background: var(--rose); color: white; }
 
-    /* --- 反思区 --- */
+    /* --- Reflection --- */
     .reflection { background: #0f172a; color: white; padding: 6.5rem; border-radius: 4.5rem; position: relative; overflow: hidden; }
     .reflection blockquote { font-size: clamp(1.1rem, 2vw, 1.4rem); font-weight: 400; line-height: 1.8; margin: 0; z-index: 5; position: relative; color: #cbd5e1; }
-    .reflection b { color: #fff; font-weight: 700; }
+    .reflection b { color: var(--rose); font-weight: 700; }
 
-    /* --- 颜色主题 --- */
+    /* Theme Colors */
     .g-blue { background: linear-gradient(90deg, #1d4ed8, #312e81); }
     .g-rose { background: linear-gradient(90deg, #f43f5e, #9f1239); }
     .g-amber { background: linear-gradient(90deg, #f59e0b, #9a3412); }
@@ -181,7 +180,7 @@
     <div class="hero-content">
       <div class="pill">ENG4U Academic Thesis Portfolio</div>
       <h1 class="hero-title">ALL SUMMER<br><span>IN A DAY</span></h1>
-      <p class="hero-sub" style="letter-spacing:0.5em; color:rgba(255,255,255,0.7); font-size: 1.1rem; font-weight: 700;">VENUS CHRONICLES & THE LANDLADY</p>
+      <p class="hero-sub" style="letter-spacing:0.5em; color:rgba(255,255,255,0.7); font-size: 1.1rem; font-weight: 700;">RAY BRADBURY: THE COST OF JEALOUSY</p>
       <div style="margin-top:4rem; font-weight: 900; letter-spacing: 0.25em; border-bottom: 3px solid var(--rose); display: inline-block; padding-bottom: 8px;">BY OLIVER CEN</div>
     </div>
   </header>
@@ -189,33 +188,38 @@
   <main class="container section-padding">
     <div class="space-y-huge">
       
-      <!-- 1. AUTHOR TIMELINE -->
+      <!-- 1. INTRO & AUTHOR -->
       <section id="biography">
         <div class="section-header g-blue">
           <div class="icon-box">🎓</div>
-          <h2>Ray Bradbury Legacy</h2>
+          <h2>Ray Bradbury & The Venusian Setting</h2>
         </div>
-        <div class="author-grid">
+        <div class="author-grid" style="display: grid; grid-template-columns: 1fr 1.5fr; gap: 3rem; align-items: center;">
           <div class="img-wrap">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Ray_Bradbury_%281975%29.jpg/800px-Ray_Bradbury_%281975%29.jpg" alt="Ray Bradbury Portrait">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Ray_Bradbury_%281975%29.jpg/800px-Ray_Bradbury_%281975%29.jpg" alt="Ray Bradbury">
           </div>
-          <div id="timeline-box" style="display: flex; flex-direction: column; gap: 2rem;"></div>
+          <div id="timeline-box" style="display: flex; flex-direction: column; gap: 2rem;">
+            <div class="card">
+              <h3>The Setting: A Sensory Prison</h3>
+              <p>Ray Bradbury’s Venus is not a planet of adventure, but a world of psychological amnesia. The relentless rain for seven years acts as a sensory prison, washing away the children's memories of "real" life and truth. In this environment, environment dictates morality—without light, compassion simply withers away.</p>
+            </div>
+          </div>
         </div>
       </section>
 
-      <!-- 2. NARRATIVE STRUCTURE (Plot Arc) -->
+      <!-- 2. NARRATIVE ARC ANALYSIS -->
       <section id="plot-arc">
         <div class="section-header g-indigo">
           <div class="icon-box">📈</div>
-          <h2>Narrative Arc Analysis</h2>
+          <h2>Narrative Structure Analysis</h2>
         </div>
         <div style="display:grid; grid-template-columns: 1.5fr 1fr; gap: 3rem; align-items: start;">
           <div class="arc-container" id="arc-box"></div>
-          <div class="img-wrap"><img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1000" alt="Venus Environment"></div>
+          <div class="img-wrap"><img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2000" alt="Venus storms"></div>
         </div>
       </section>
 
-      <!-- 3. THEMATIC MASTERY (EXPANDED) -->
+      <!-- 3. THEMATIC MASTERY -->
       <section id="themes">
         <div class="section-header g-rose">
           <div class="icon-box">💎</div>
@@ -224,120 +228,89 @@
         <div class="grid grid-3">
           <div class="card">
             <span class="highlight-text">Core Theme I</span>
-            <h3>Appearance vs. Reality</h3>
-            <p>Evil does not always appear terrifying. Roald Dahl breaks the stereotype of "dangerous people" by depicting the Landlady as gentle and polite. This facade lowers Billy's guard, proving that danger is most effective when it takes the most common and intimate forms. Judging by surface level is inherently unreliable.</p>
+            <h3>The Cruelty of Jealousy</h3>
+            <p>The children's hatred for Margot is not based on her actions, but on her <b>experiences</b>. She remembers the sun; they don't. This "existential envy" drives them to punish her for possessing a truth they lack. Jealousy here acts as a dehumanizing force that justifies violence.</p>
           </div>
           <div class="card">
             <span class="highlight-text">Core Theme II</span>
-            <h3>Blind Trust & Vigilance</h3>
-            <p>Trust lacking critical thinking is a fatal risk. Both Billy Weaver and the Venusian children ignore clear anomalies. Billy accepts the "strange odor" and "familiar names" as coincidences. Real danger arises from people's own unwillingness to think and question when warning signs are accumulating step by step.</p>
+            <h3>Mob Mentality & Deindividuation</h3>
+            <p>Individual conscience vanishes in a crowd. The closet scene demonstrates how a collective can perform evil with a sense of immunity. Responsibility is shared and thus diluted; not a single child objects to William’s plan, creating a "bubble of immunity" for cruelty.</p>
           </div>
-          <div class="card" style="border-top: 5px solid var(--amber);">
+          <div class="card">
             <span class="highlight-text">Core Theme III</span>
-            <h3>Dramatic Irony & Cruelty</h3>
-            <p>The state of readers "knowing more" than the protagonist creates a chilling tension. Bradbury and Dahl both use this to emphasize the cruelty of the theme: if a person refuses to doubt in the face of danger, the consequences are irreversible. Once trust is exploited, there is no second chance.</p>
+            <h3>The Loss of Innocence</h3>
+            <p>The transition from the golden hour of the sun back to the gray silence of the rain marks the children's permanent loss of innocence. Their "epiphany of guilt" at the end is a realization that some acts of cruelty are as irreversible as the rain itself.</p>
           </div>
         </div>
       </section>
 
-      <!-- 4. SYMBOLS & IMAGERY (EXPANDED) -->
-      <section id="symbols">
+      <!-- 4. SYMBOLISM & CONFLICT -->
+      <section id="analysis">
         <div class="section-header g-amber">
           <div class="icon-box">✨</div>
-          <h2>Symbolism & Iconography</h2>
+          <h2>Symbolism & Conflict Anatomy</h2>
         </div>
         <div class="grid grid-2">
           <div class="card">
             <div class="num">☀️</div>
-            <h3>The Sun & The Rain</h3>
-            <p>The <b>Sun</b> is a flower of memory and truth that blooms for one hour. The <b>Rain</b> is a sensory prison. This transition symbolizes the loss of innocence and the atrophy of compassion in a world where environment dictates morality.</p>
+            <h3>Symbol: The Sun</h3>
+            <p>The sun represents divinity, truth, and spiritual awakening. It is a "flower that blooms for just one hour." For Margot, it is life itself; for the other children, it is a joke or a myth until it finally exposes their smallness and their sin.</p>
           </div>
           <div class="card">
-            <div class="num">🐦</div>
-            <h3>Stuffed Specimens</h3>
-            <p>In <em>The Landlady</em>, the stuffed parrot and dog represent the preservation of the "innocent." They are literal omens of Billy's future—a permanent, hollow "perfection" where life is sacrificed for a static facade of safety.</p>
-          </div>
-          <div class="card">
-            <div class="num">🏠</div>
-            <h3>The Boarding House</h3>
-            <p>A trap disguised as a traditional home. The furniture and fireplace evoke a false sense of trust. It is the stage where the theme "Danger hides within safety" unfolds, proving that intimacy can be weaponized.</p>
-          </div>
-          <div class="card">
-            <div class="num">🍵</div>
-            <h3>The Poisoned Tea</h3>
-            <p>Symbolizes the weaponization of domestic kindness. It is the final "seal" of the predator's trap, representing the irreversible point where blind trust leads to the loss of individual autonomy and life.</p>
+            <div class="num">🚪</div>
+            <h3>Conflict: Man vs. Society</h3>
+            <p>Margot is the "Tall Poppy"—different, gifted, and superior in her memories. The group’s action is a violent attempt to "equalize" everyone by bringing the superior down to the level of the average amnesiac. It is a war between memory and forgetting.</p>
           </div>
         </div>
       </section>
 
-      <!-- 5. ANATOMY OF CONFLICT (EXPANDED) -->
-      <section id="conflicts">
-        <div class="section-header g-dark">
-          <div class="icon-box">⚔️</div>
-          <h2>The Anatomy of Conflict</h2>
+      <!-- 5. CHARACTER PROFILES -->
+      <section id="characters">
+        <div class="section-header g-cyan">
+          <div class="icon-box">👥</div>
+          <h2>Character Archetypes</h2>
         </div>
-        <div class="grid grid-2">
-          <div class="card">
-            <span class="highlight-text">All Summer in a Day</span>
-            <h3>Man vs. Society (The Mob)</h3>
-            <p>The conflict centers on Margot as the "Tall Poppy." The group performs collective evil to maintain amnesia. Not a single child objects to locking her away, creating a "bubble of immunity" where responsibility is shared and thus diluted, allowing the mob to bypass individual morality.</p>
+        <div class="char-split" style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+          <div class="card" style="border-top: 8px solid var(--rose);">
+            <span class="highlight-text">The Martyr / Outsider</span>
+            <h3>Margot</h3>
+            <p>Pale, frail, and withdrawn. She is the only link to "Earthly Truth." Her physical fading mirrors the psychological toll of isolation. She carries the burden of truth that the group is not yet ready to face.</p>
           </div>
-          <div class="card" style="border-left: 8px solid var(--amber);">
-            <span class="highlight-text">The Landlady</span>
-            <h3>Man vs. Man (The Hidden Predator)</h3>
-            <p>A hidden conflict where one party is fully aware of the fatality while the other is oblivious. Billy remains grateful while the Landlady poses a lethal threat. The climax is a <b>Cognitive Shock</b>: previously scattered details suddenly merge into a disturbing, inescapable truth.</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- 6. CHARACTER STUDY: BILLY WEAVER (PDF DATA) -->
-      <section id="character">
-        <div class="section-header g-blue">
-          <div class="icon-box">👤</div>
-          <h2>Character Analysis: Billy Weaver</h2>
-        </div>
-        <div class="grid grid-2">
-          <div class="card">
-            <h3>The Susceptible Optimist</h3>
-            <p>Billy is a polite boy who believes friendly speech equals trustworthiness. His optimistic "light step" is his vulnerability. He detects anomalies—the empty street, the indescribable odor—but lacks the social experience to determine their meaning. He naively assumes danger must be obvious and direct.</p>
-          </div>
-          <div class="card">
-            <h3>Symbol of Vulnerable Youth</h3>
-            <p>Billy represents the innocent group facing society alone for the first time. His lack of growth is his tragedy: even when clues are obvious, he chooses the Landlady's explanation over his own intuition. This emphasizes the cruelty of a theme where refusing to doubt in danger leads to irreversible ends.</p>
+          <div class="card" style="border-top: 8px solid var(--indigo);">
+            <span class="highlight-text">The Agent of Conformity</span>
+            <h3>William & The Mob</h3>
+            <p>William represents the predatory leader who weaponizes the group's fear and jealousy. The other children, acting as a single homogenized mass, follow him to avoid the pain of their own inadequacy.</p>
           </div>
         </div>
       </section>
 
-      <!-- 7. PERSONAL REFLECTION (INTEGRATED PDF DATA) -->
+      <!-- 6. PERSONAL REFLECTION (ADAPTED) -->
       <section id="reflection">
-        <div class="section-header g-rose">
-          <div class="icon-box">💭</div>
-          <h2>Personal Connection & Digital Defense</h2>
+        <div class="section-header g-dark">
+          <div class="icon-box">💬</div>
+          <h2>Personal Connection: The "Closet" in Reality</h2>
         </div>
         <div class="reflection">
           <blockquote id="reflection-text">
-            <b>My reaction to these stories was shock and depression, but carrying a sense of warning on a realistic level.</b> As an international student in Canada, I arrived in a strange city with full trust. <br><br>
-            I met a classmate who was initially very friendly. I trusted her and moved into her host family. However, when I transfered schools, <b>everything suddenly changed.</b> The hostess began to shout and abuse me in her country's language. Being a minor without other friends, I had to endure this hostile environment. On the day I moved out, all my cash was gone. <br><br>
-            <b>Just like Billy Weaver, I wasn't oblivious to the anomalies.</b> I noticed the change in attitude but chose to ignore it to avoid tension, thinking I'd leave soon anyway. This experience taught me that <b>superficial friendliness does not equal true security.</b> Critical thinking and vigilance are essential for survival. Maintaining politeness must never come at the cost of ignoring warning signs.
+            <b>Reading "All Summer in a Day" evoked a profound sense of shock and depression, resonating deeply with my own life.</b> As an international student in Canada, I have experienced what it feels like to be an "Outsider" in a strange environment. <br><br>
+            When I first moved into a host family, everything seemed friendly. However, when I announced my transfer, the atmosphere turned hostile—I was yelled at and abused in a language I was still learning. Being a minor without other friends, <b>I was essentially locked in a "closet" of isolation and verbal abuse.</b> On the day I moved out, all my cash was gone. <br><br>
+            Just like Margot, I noticed the "anomalies" in their changing attitude but chose to ignore them to avoid tension, hoping for a "sunlight" (a smooth move-out) that was being sabotaged. This experience taught me that <b>superficial friendliness does not equal true security.</b> In a hostile environment, maintaining silence often only emboldens the "mob." Critical thinking and vigilance are essential for survival when you are the one standing apart from the group.
           </blockquote>
         </div>
       </section>
 
-      <!-- 8. DEFENSE VIDEO (FIXED CLICK) -->
+      <!-- 7. DIGITAL DEFENSE VIDEO -->
       <section id="media">
         <div class="section-header g-blue">
           <div class="icon-box">▶</div>
-          <h2>Digital Oral Defense</h2>
+          <h2>Digital Defense: Multimodal Presentation</h2>
         </div>
-        <!-- 视频容器 -->
         <div class="video-box" id="v-container" onclick="startVideo()">
-          <!-- 封面遮罩层 -->
           <div class="video-overlay" id="v-overlay">
             <div class="play-btn">▶</div>
-            <h3 style="color:white; letter-spacing: 0.15em; font-weight: 900; text-transform: uppercase; margin-top: 1.5rem;">Launch Multimodal Analysis</h3>
-            <p style="color:rgba(255,255,255,0.6); font-family: ui-monospace, monospace;">OLIVER_CEN_THESIS_FINAL.MP4</p>
+            <h3 style="color:white; letter-spacing: 0.15em; font-weight: 900; text-transform: uppercase; margin-top: 1.5rem;">Launch Video Analysis</h3>
+            <p style="color:rgba(255,255,255,0.6); font-family: ui-monospace, monospace;">OLIVER_CEN_DEFENSE_V6.MP4</p>
           </div>
-          <!-- Iframe 容器 -->
           <div id="video-iframe-container" style="width: 100%; height: 100%;"></div>
         </div>
       </section>
@@ -352,23 +325,18 @@
 
   <script>
     const FULL_DATA = {
-      timeline: [
-        { year: "1920", event: "Birth of a Visionary", detail: "Ray Bradbury was born in Illinois. His early love for silent films shaped his vivid, rhythmic prose style." },
-        { year: "1954", event: "Venusian Publication", detail: "Published 'All Summer in a Day', critiquing mob conformity at the height of the space race." },
-        { year: "Legacy", event: "Master of the Uncanny", detail: "Like Roald Dahl, Bradbury specialized in exposing the dread lurking beneath daily life." }
-      ],
       plotArc: [
-        { label: "Exposition", title: "The Gray Prison", desc: "Setting the scene on a rainy Venus where children have lived in amnesia. Margot is the only link to the Sun's truth." },
-        { label: "Rising Action", title: "The Mob's Tension", desc: "The children mock Margot's memories based on scientific predictions. Tensions peak, leading them to lock her in a closet." },
-        { label: "Climax", title: "The Golden Hour", desc: "The rain stops. The sun emerges in flaming bronze. For one hour, the children experience 'true life', forgetting Margot entirely." },
-        { label: "Falling Action", title: "The Return of Rain", desc: "A cold drop falls. The sun fades. The children trudge back into the underground, joy replaced by a growing realization of their crime." },
-        { label: "Resolution", title: "Epiphany of Silence", desc: "They remember Margot and unlock the closet. The door opens to a devastating silence, marking their transition from innocence to guilt." }
+        { label: "Exposition", title: "The Gray Prison", desc: "Setting the scene on a rainy Venus where children haven't seen the sun in 7 years. Introducing Margot, the outsider from Earth who remembers the light." },
+        { label: "Rising Action", title: "The Rising Jealousy", desc: "Margot's isolation grows. The children mock her memories based on scientists' predictions. Tensions peak, and they lock her in a closet." },
+        { label: "Climax", title: "The Golden Hour", desc: "The rain stops. The sun emerges in flaming bronze. For one hour, the children experience 'true life'—nature, warmth, and joy—forgetting Margot entirely." },
+        { label: "Falling Action", title: "The Return of Gray", desc: "A cold drop falls. The sun fades. The children trudge back into the underground, joy replaced by a heavy, growing realization of their crime." },
+        { label: "Resolution", title: "Epiphany of Silence", desc: "They remember Margot and walk slowly to the closet. The door opens to a devastating silence, marking their transition from amnesia to guilt." }
       ],
       youtubeId: "0UwkTzUclOg"
     };
 
     function init() {
-      // 动态雨滴
+      // Rain Effect
       const r = document.getElementById('rain');
       for(let i=0; i<120; i++) {
         const d = document.createElement('div');
@@ -380,19 +348,7 @@
         r.appendChild(d);
       }
 
-      // 时间轴
-      const tb = document.getElementById('timeline-box');
-      FULL_DATA.timeline.forEach(item => {
-        tb.innerHTML += `
-          <div style="border-left: 5px solid var(--blue); padding-left: 2rem;">
-            <div style="font-weight: 900; color: var(--blue); font-size: 1.2rem;">${item.year}</div>
-            <h3 style="margin: 0.5rem 0; font-weight: 900; font-size: 1.5rem;">${item.event}</h3>
-            <p style="color:var(--muted); font-size:1rem;">${item.detail}</p>
-          </div>
-        `;
-      });
-
-      // 情节弧
+      // Plot Arc Rendering
       const ab = document.getElementById('arc-box');
       FULL_DATA.plotArc.forEach((step, idx) => {
         ab.innerHTML += `
@@ -408,16 +364,13 @@
       });
     }
 
-    // 视频启动函数
+    // Fixed Video Function
     function startVideo() {
       const overlay = document.getElementById('v-overlay');
       const container = document.getElementById('video-iframe-container');
-      
-      // 渐隐动画
       overlay.style.opacity = '0';
       setTimeout(() => {
         overlay.style.display = 'none';
-        // 动态插入 iframe
         container.innerHTML = `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/${FULL_DATA.youtubeId}?autoplay=1&modestbranding=1&rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style="border:none;"></iframe>`;
       }, 500);
     }
