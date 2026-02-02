@@ -31,7 +31,7 @@
       overflow-x: hidden;
     }
 
-    /* --- 背景纹理：创伤与雨迹 --- */
+    /* --- Background Texture: Trauma & Rain Streaks --- */
     body::before {
       content: ""; position: fixed; inset: 0;
       background-image: 
@@ -70,12 +70,12 @@
     }
     .hero-sub { letter-spacing: 0.4em; color: var(--muted); font-size: 1.1rem; text-transform: uppercase; margin-top: 2rem; }
 
-    /* --- 布局容器 --- */
+    /* --- Container Layout --- */
     .container { width: min(1200px, 92vw); margin: 0 auto; }
     .section-padding { padding: 12rem 0; }
     .space-y { display: flex; flex-direction: column; gap: 12rem; }
 
-    /* --- 板块标题 --- */
+    /* --- Section Headers --- */
     .section-header {
       display: flex; align-items: center; gap: 2rem; margin-bottom: 5rem;
       padding: 2rem 3.5rem; border-radius: 3rem; background: rgba(255,255,255,0.02);
@@ -88,7 +88,7 @@
     }
     .section-header h2 { font-size: 2.5rem; font-weight: 900; margin: 0; letter-spacing: -0.02em; text-transform: uppercase; }
 
-    /* --- 卡片设计：毛玻璃质感 --- */
+    /* --- Card Design: Glassmorphism --- */
     .card {
       background: var(--card-bg); padding: 4.5rem; border-radius: var(--radius);
       border: 1px solid var(--card-border); backdrop-filter: blur(20px);
@@ -120,7 +120,7 @@
     }
     @keyframes fadeIn { from { opacity: 0; transform: translateX(-20px); } to { opacity: 1; transform: translateX(0); } }
 
-    /* --- 视频交互 --- */
+    /* --- Video Interactive Frame --- */
     .video-frame {
       aspect-ratio: 16/9; background: #000; border-radius: 3.5rem;
       overflow: hidden; border: 15px solid rgba(255,255,255,0.03);
@@ -138,7 +138,7 @@
     }
     .video-frame:hover .play-circle { transform: scale(1.1); background: var(--rose); color: #fff; }
 
-    /* --- 个人反思模块 --- */
+    /* --- Reflection Block --- */
     .reflection-box {
       background: linear-gradient(135deg, #0f172a 0%, #030712 100%);
       color: white; padding: 7rem; border-radius: 4rem; position: relative;
@@ -167,7 +167,7 @@
       <div class="pill">ENG4U Academic Culminating Project</div>
       <h1 class="hero-title">ALL SUMMER<br><span>in a Day</span></h1>
       <p class="hero-sub">The Architecture of Collective Guilt & Trauma</p>
-      <div style="margin-top:5rem; font-weight: 900; letter-spacing: 0.3em; border-bottom: 3px solid var(--rose); display: inline-block; padding-bottom: 12px; font-size: 1.2rem;">BY OLIVER CEN</div>
+      <div style="margin-top:5rem; font-weight: 900; letter-spacing: 0.3em; border-bottom: 3px solid var(--rose); display: inline-block; padding-bottom: 12px; font-size: 1.2rem;">BY GUO CEN</div>
     </div>
   </header>
 
@@ -195,7 +195,7 @@
         <div style="display: grid; grid-template-columns: 1fr 1.5fr; gap: 5rem; align-items: center;">
           <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Ray_Bradbury_%281975%29.jpg/800px-Ray_Bradbury_%281975%29.jpg" class="img-academic" alt="Portrait of Ray Bradbury">
           <div id="timeline-list" style="display: flex; flex-direction: column; gap: 2.5rem;">
-            <!-- JS Renders -->
+            <!-- JS Renders Timeline Items -->
           </div>
         </div>
       </section>
@@ -211,13 +211,13 @@
             <svg class="chart-svg" viewBox="0 0 1000 400">
               <line x1="50" y1="350" x2="950" y2="350" stroke="rgba(255,255,255,0.1)" stroke-width="2" />
               <path class="chart-line" d="M 80 320 L 280 200 L 500 50 L 720 250 L 920 320" />
-              <!-- 文字标签 -->
+              <!-- Axis Labels -->
               <text x="80" y="380" class="chart-text" text-anchor="middle">Exposition</text>
               <text x="280" y="380" class="chart-text" text-anchor="middle">Rising Action</text>
               <text x="500" y="380" class="chart-text" text-anchor="middle">Climax</text>
               <text x="720" y="380" class="chart-text" text-anchor="middle">Falling Action</text>
               <text x="920" y="380" class="chart-text" text-anchor="middle">Resolution</text>
-              <!-- 交互点 -->
+              <!-- Interactive Points -->
               <circle class="chart-point" cx="80" cy="320" r="8" onclick="updatePlot(0)" />
               <circle class="chart-point" cx="280" cy="200" r="8" onclick="updatePlot(1)" />
               <circle class="chart-point" cx="500" cy="50" r="8" onclick="updatePlot(2)" />
@@ -228,7 +228,7 @@
           <div id="plot-display-card">
             <span id="p-label" class="highlight-label">Current Stage</span>
             <h3 id="p-title">Select a Node to Analyze</h3>
-            <p id="p-desc">Interact with the tension graph above to witness the detailed 5-sentence narrative progression and psychological breakdown of the story.</p>
+            <p id="p-desc">Interact with the tension graph above to witness the detailed narrative progression and psychological breakdown of the story.</p>
           </div>
         </div>
       </section>
@@ -239,7 +239,7 @@
           <div class="icon-box" style="background: var(--amber);">👤</div>
           <h2 style="background: linear-gradient(to right, var(--amber), var(--orange)); -webkit-background-clip: text; color: transparent;">Character Characteristics</h2>
         </div>
-        <div class="grid grid-2">
+        <div class="grid grid-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem;">
           <div class="card">
             <span class="highlight-label">The Victim</span>
             <h3>Margot: The Frail Prophet</h3>
@@ -247,7 +247,7 @@
           </div>
           <div class="card" style="border-left-color: var(--indigo);">
             <span class="highlight-label">The Mob</span>
-            <h3>William & The Homogenized Group</h3>
+            <h3>William & The Class</h3>
             <p>William serves as the predatory catalyst for the class, representing the dark side of unled, bored, and amnesiac youth. The class as a whole exhibits the psychological state of deindividuation, acting as a single organism driven by existential envy rather than individual malice. Their defining characteristic is a collective cruelty that arises when they encounter a truth they can no longer possess. By locking Margot in the closet, the group finds a sense of immunity and shared responsibility for their malicious act. Lacking individual names and consciences, they represent the tragedy of a society that chooses to blind its prophets to maintain its comfortable amnesia. Their final silence is the characteristic realization of their irreversible loss of innocence.</p>
           </div>
         </div>
@@ -259,7 +259,7 @@
           <div class="icon-box" style="background: var(--rose);">✨</div>
           <h2 style="background: linear-gradient(to right, var(--rose), var(--orange)); -webkit-background-clip: text; color: transparent;">Thematic Architecture</h2>
         </div>
-        <div class="grid grid-2">
+        <div class="grid grid-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem;">
           <div class="card">
             <span class="highlight-label">Symbolism</span>
             <h3>The Sun & The Closet</h3>
@@ -287,7 +287,7 @@
         </div>
       </section>
 
-      <!-- 7. VIDEO -->
+      <!-- 7. VIDEO DEFENSE -->
       <section id="media">
         <div class="section-header" style="border-color: var(--blue);">
           <div class="icon-box" style="background: var(--blue);">▶</div>
@@ -297,7 +297,7 @@
           <div class="video-overlay" id="v-overlay">
             <div class="play-circle">▶</div>
             <h3 style="color:white; letter-spacing: 0.15em; font-weight: 900; text-transform: uppercase; margin-top: 2rem;">Launch Multimodal Presentation</h3>
-            <p style="color:rgba(255,255,255,0.6); font-family: ui-monospace, monospace;">OLIVER_CEN_THESIS_V10.MP4</p>
+            <p style="color:rgba(255,255,255,0.6); font-family: ui-monospace, monospace;">GUO_CEN_THESIS_FINAL.MP4</p>
           </div>
           <div id="video-embed" style="width: 100%; height: 100%;"></div>
         </div>
@@ -307,7 +307,7 @@
   </main>
 
   <footer style="padding: 10rem 0 6rem; border-top: 1px solid var(--card-border); text-align: center;">
-    <h2 style="font-weight: 900; font-size: 3.5rem; margin: 0; letter-spacing: -0.05em;">Oliver Cen<span>.</span></h2>
+    <h2 style="font-weight: 900; font-size: 3.5rem; margin: 0; letter-spacing: -0.05em;">Guo Cen<span>.</span></h2>
     <div style="color: var(--muted); font-weight: 800; letter-spacing: 0.5em; text-transform: uppercase; margin-top: 1.5rem; font-size: 0.9rem;">Digital Thesis Portfolio — ENG4U Culminating Project</div>
   </footer>
 
