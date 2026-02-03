@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ALL SUMMER IN A DAY — Deep Literary Digital Thesis</title>
+  <title>ALL SUMMER IN A DAY — Digital Academic Thesis</title>
   <style>
     :root{
       --bg: #030712;
@@ -16,7 +16,7 @@
       --amber: #f59e0b;
       --blue: #3b82f6;
       --indigo: #6366f1;
-      --shadow: 0 25px 60px -15px rgba(0,0,0,0.5);
+      --shadow: 0 25px 60px -15px rgba(0,0,0,0.6);
       --radius: 2rem;
     }
 
@@ -31,12 +31,12 @@
       overflow-x: hidden;
     }
 
-    /* --- Background Texture: Trauma & Rain Streaks --- */
+    /* --- Background Layering --- */
     body::before {
       content: ""; position: fixed; inset: 0;
       background-image: 
-        radial-gradient(circle at 20% 30%, rgba(244,63,94,0.05) 0%, transparent 50%),
-        radial-gradient(circle at 80% 70%, rgba(59,130,246,0.05) 0%, transparent 50%);
+        radial-gradient(circle at 15% 20%, rgba(244,63,94,0.08) 0%, transparent 40%),
+        radial-gradient(circle at 85% 80%, rgba(59,130,246,0.08) 0%, transparent 40%);
       pointer-events: none; z-index: -1;
     }
 
@@ -44,17 +44,19 @@
     .hero {
       position: relative; height: 100vh;
       display: flex; align-items: center; justify-content: center;
-      background: radial-gradient(circle at center, #0f172a 0%, #030712 100%);
+      background: linear-gradient(rgba(3,7,18,0.3), rgba(3,7,18,0.8)), 
+                  url('https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?q=80&w=2000');
+      background-size: cover; background-position: center;
       overflow: hidden; text-align: center;
     }
-    .rain-container { position: absolute; inset: 0; pointer-events: none; z-index: 2; opacity: 0.4; }
+    .rain-container { position: absolute; inset: 0; pointer-events: none; z-index: 2; opacity: 0.35; }
     .drop { position: absolute; width: 1px; height: 120px; background: linear-gradient(transparent, #94a3b8); animation: fall linear infinite; }
     @keyframes fall { to { transform: translateY(110vh); } }
 
     .hero-content { z-index: 10; position: relative; max-width: 900px; padding: 0 2rem; }
     .pill {
       display: inline-block; padding: 0.7rem 2rem;
-      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
       border-radius: 99px; font-size: 0.8rem; font-weight: 800;
       letter-spacing: 0.5em; text-transform: uppercase; color: var(--rose);
       margin-bottom: 2.5rem; backdrop-filter: blur(10px);
@@ -88,7 +90,7 @@
     }
     .section-header h2 { font-size: 2.5rem; font-weight: 900; margin: 0; letter-spacing: -0.02em; text-transform: uppercase; }
 
-    /* --- Card Design: Glassmorphism --- */
+    /* --- Card Design --- */
     .card {
       background: var(--card-bg); padding: 4.5rem; border-radius: var(--radius);
       border: 1px solid var(--card-border); backdrop-filter: blur(20px);
@@ -104,15 +106,23 @@
     .card p { color: var(--muted); font-size: 1.2rem; line-height: 2; margin-bottom: 0; }
     .highlight-label { color: var(--rose); font-weight: 800; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 0.25em; display: block; margin-bottom: 1rem; }
 
+    /* --- Image Blocks --- */
+    .img-wrap {
+      border-radius: 2rem; overflow: hidden; border: 1px solid var(--card-border);
+      box-shadow: var(--shadow); margin-bottom: 2rem; position: relative;
+    }
+    .img-wrap img { width: 100%; height: auto; display: block; filter: brightness(0.8); transition: 0.5s; }
+    .img-wrap:hover img { filter: brightness(1.1); transform: scale(1.05); }
+
     /* --- Plot Chart SVG --- */
-    .plot-container { background: rgba(0,0,0,0.2); padding: 5rem; border-radius: 3rem; border: 1px solid var(--card-border); }
+    .plot-container { background: rgba(0,0,0,0.3); padding: 5rem; border-radius: 3rem; border: 1px solid var(--card-border); }
     .chart-wrapper { width: 100%; height: 400px; position: relative; margin: 4rem 0; }
     .chart-svg { width: 100%; height: 100%; overflow: visible; }
     .chart-line { fill: none; stroke: var(--indigo); stroke-width: 5; stroke-dasharray: 1500; animation: draw 5s forwards; }
     @keyframes draw { from { stroke-dashoffset: 1500; } to { stroke-dashoffset: 0; } }
     .chart-point { fill: var(--bg); stroke: var(--indigo); stroke-width: 4; transition: 0.4s; cursor: pointer; }
     .chart-point:hover { fill: var(--rose); stroke: #fff; r: 12; }
-    .chart-text { fill: var(--muted); font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; }
+    .chart-text { fill: var(--muted); font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.15em; }
     
     #plot-display-card {
       margin-top: 3rem; padding: 3.5rem; background: rgba(255,255,255,0.03); border-radius: 2rem;
@@ -120,7 +130,7 @@
     }
     @keyframes fadeIn { from { opacity: 0; transform: translateX(-20px); } to { opacity: 1; transform: translateX(0); } }
 
-    /* --- Video Interactive Frame --- */
+    /* --- Video Frame --- */
     .video-frame {
       aspect-ratio: 16/9; background: #000; border-radius: 3.5rem;
       overflow: hidden; border: 15px solid rgba(255,255,255,0.03);
@@ -138,20 +148,21 @@
     }
     .video-frame:hover .play-circle { transform: scale(1.1); background: var(--rose); color: #fff; }
 
-    /* --- Reflection Block --- */
+    /* --- Reflection --- */
     .reflection-box {
       background: linear-gradient(135deg, #0f172a 0%, #030712 100%);
       color: white; padding: 7rem; border-radius: 4rem; position: relative;
       border: 1px solid var(--card-border); box-shadow: var(--shadow-lg);
     }
     .reflection-box blockquote { font-size: 1.3rem; font-weight: 300; line-height: 2.2; margin: 0; color: #cbd5e1; }
-    .reflection-box b { color: var(--rose); font-weight: 800; text-shadow: 0 0 15px rgba(244,63,94,0.3); }
+    .reflection-box b { color: var(--rose); font-weight: 800; }
 
-    .img-academic { border-radius: 50%; aspect-ratio: 1/1; border: 10px solid var(--card-border); box-shadow: var(--shadow); object-fit: cover; transition: 0.5s; }
-    .img-academic:hover { border-color: var(--rose); transform: rotate(5deg); }
+    /* --- Multi-Column Grids --- */
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; }
 
     @media (max-width: 900px) {
-      .grid-2 { grid-template-columns: 1fr; }
+      .grid-2, .grid-3 { grid-template-columns: 1fr; }
       .section-header { padding: 1.5rem; flex-direction: column; text-align: center; }
       .plot-container { padding: 2rem; }
     }
@@ -162,7 +173,6 @@
   <!-- HERO -->
   <header class="hero">
     <div id="rain-box" class="rain-container"></div>
-    <div class="haze"></div>
     <div class="hero-content">
       <div class="pill">ENG4U Academic Culminating Project</div>
       <h1 class="hero-title">ALL SUMMER<br><span>in a Day</span></h1>
@@ -174,33 +184,44 @@
   <main class="container section-padding">
     <div class="space-y">
 
-      <!-- 1. SUMMARY -->
+      <!-- 1. SUMMARY WITH IMAGE -->
       <section id="summary">
         <div class="section-header">
           <div class="icon-box">📜</div>
           <h2 style="background: linear-gradient(to right, #fff, #94a3b8); -webkit-background-clip: text; color: transparent;">Executive Summary</h2>
         </div>
-        <div class="card">
-          <span class="highlight-label">Literary Overview</span>
-          <p>Ray Bradbury’s <em>All Summer in a Day</em> stands as a definitive exploration of how environmental sensory deprivation can fundamentally erode human empathy and compassion. Set on a planet Venus defined by seven-year cycles of relentless gray rain, the story introduces Margot, a child whose Earthly memories of sunlight turn her into a target of profound group malice. As the miracle of the sun's brief appearance approaches, her peers succumb to a primal mob mentality, driven by an existential envy they cannot articulate. By ritualistically locking Margot in a dark closet, the class commits a symbolic murder of the truth she represents, physically and spiritually isolating her from the light. This digital thesis meticulously examines the psychological trauma of this exclusion and the permanent stain of collective guilt that marks the children as the gray rain inevitably returns.</p>
+        <div class="grid-2">
+          <div class="img-wrap">
+            <img src="https://images.unsplash.com/photo-1534067783941-51c9c23ecefd?q=80&w=1000" alt="Storm clouds and rain">
+          </div>
+          <div class="card">
+            <span class="highlight-label">Literary Overview</span>
+            <p>Ray Bradbury’s <em>All Summer in a Day</em> stands as a definitive exploration of how environmental sensory deprivation can fundamentally erode human empathy and compassion. Set on a planet Venus defined by seven-year cycles of relentless gray rain, the story introduces Margot, a child whose Earthly memories of sunlight turn her into a target of profound group malice. As the miracle of the sun's brief appearance approaches, her peers succumb to a primal mob mentality, driven by an existential envy they cannot articulate. By ritualistically locking Margot in a dark closet, the class commits a symbolic murder of the truth she represents, physically and spiritually isolating her from the light. This digital thesis meticulously examines the psychological trauma of this exclusion and the permanent stain of collective guilt that marks the children as the gray rain inevitably returns.</p>
+          </div>
         </div>
       </section>
 
-      <!-- 2. AUTHOR TIMELINE -->
+      <!-- 2. AUTHOR LEGACY -->
       <section id="biography">
         <div class="section-header" style="border-color: var(--blue);">
           <div class="icon-box" style="background: var(--blue);">🎓</div>
           <h2 style="background: linear-gradient(to right, var(--blue), var(--indigo)); -webkit-background-clip: text; color: transparent;">Ray Bradbury Legacy</h2>
         </div>
-        <div style="display: grid; grid-template-columns: 1fr 1.5fr; gap: 5rem; align-items: center;">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Ray_Bradbury_%281975%29.jpg/800px-Ray_Bradbury_%281975%29.jpg" class="img-academic" alt="Portrait of Ray Bradbury">
+        <div class="grid-2" style="align-items: center;">
+          <div style="text-align: center;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Ray_Bradbury_%281975%29.jpg/800px-Ray_Bradbury_%281975%29.jpg" class="img-academic" alt="Portrait of Ray Bradbury" style="width: 350px; height: 350px; margin-bottom: 2rem;">
+            <div class="card" style="padding: 2rem; border-top: 4px solid var(--blue);">
+              <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">The Poet of Sci-Fi</h3>
+              <p style="font-size: 1rem;">Bradbury notoriously wrote that his intention was not to predict the future, but to prevent it.</p>
+            </div>
+          </div>
           <div id="timeline-list" style="display: flex; flex-direction: column; gap: 2.5rem;">
-            <!-- JS Renders Timeline Items -->
+            <!-- JS Renders Timeline -->
           </div>
         </div>
       </section>
 
-      <!-- 3. NARRATIVE TENSION ARC -->
+      <!-- 3. NARRATIVE ARC -->
       <section id="plot">
         <div class="section-header" style="border-color: var(--indigo);">
           <div class="icon-box" style="background: var(--indigo);">📈</div>
@@ -211,13 +232,11 @@
             <svg class="chart-svg" viewBox="0 0 1000 400">
               <line x1="50" y1="350" x2="950" y2="350" stroke="rgba(255,255,255,0.1)" stroke-width="2" />
               <path class="chart-line" d="M 80 320 L 280 200 L 500 50 L 720 250 L 920 320" />
-              <!-- Axis Labels -->
               <text x="80" y="380" class="chart-text" text-anchor="middle">Exposition</text>
               <text x="280" y="380" class="chart-text" text-anchor="middle">Rising Action</text>
               <text x="500" y="380" class="chart-text" text-anchor="middle">Climax</text>
               <text x="720" y="380" class="chart-text" text-anchor="middle">Falling Action</text>
               <text x="920" y="380" class="chart-text" text-anchor="middle">Resolution</text>
-              <!-- Interactive Points -->
               <circle class="chart-point" cx="80" cy="320" r="8" onclick="updatePlot(0)" />
               <circle class="chart-point" cx="280" cy="200" r="8" onclick="updatePlot(1)" />
               <circle class="chart-point" cx="500" cy="50" r="8" onclick="updatePlot(2)" />
@@ -228,47 +247,68 @@
           <div id="plot-display-card">
             <span id="p-label" class="highlight-label">Current Stage</span>
             <h3 id="p-title">Select a Node to Analyze</h3>
-            <p id="p-desc">Interact with the tension graph above to witness the detailed narrative progression and psychological breakdown of the story.</p>
+            <p id="p-desc">Interact with the tension graph above to witness the detailed 5-sentence narrative progression and psychological breakdown of the story.</p>
           </div>
         </div>
       </section>
 
-      <!-- 4. CHARACTERISTICS ANALYSIS -->
+      <!-- 4. CHARACTERISTICS ANALYSIS WITH SYMBOLIC IMAGES -->
       <section id="characteristics">
         <div class="section-header" style="border-color: var(--amber);">
           <div class="icon-box" style="background: var(--amber);">👤</div>
           <h2 style="background: linear-gradient(to right, var(--amber), var(--orange)); -webkit-background-clip: text; color: transparent;">Character Characteristics</h2>
         </div>
-        <div class="grid grid-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem;">
-          <div class="card">
-            <span class="highlight-label">The Victim</span>
-            <h3>Margot: The Frail Prophet</h3>
-            <p>Margot is characterized by her profound spiritual isolation and her physical embodiment of sensory starvation on a dead planet. Described as a "ghost" and "a photograph dusted from an old album," her primary characteristic is an uncompromising spirit that refuses to trade Earthly truth for Venusian amnesia. Her fragility is a sign of her spiritual superiority; she is the "Tall Poppy" whose only crime is her memory of beauty. This characteristic isolation renders her vulnerable to a mob that fears her silence as much as her memories. Ultimately, Margot represents the tragedy of being a witness to light in a world that has institutionalized its own darkness.</p>
+        <div class="grid-2">
+          <div>
+            <div class="img-wrap" style="height: 350px;">
+              <img src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?q=80&w=1000" alt="Fragile glass in snow" style="height: 100%; object-fit: cover;">
+            </div>
+            <div class="card">
+              <span class="highlight-label">The Victim</span>
+              <h3>Margot: The Frail Prophet</h3>
+              <p>Margot is characterized by her profound spiritual isolation and her physical embodiment of sensory starvation on a dead planet. Described as a "ghost" and "a photograph dusted from an old album," her primary characteristic is an uncompromising spirit that refuses to trade Earthly truth for Venusian amnesia. Her fragility is a sign of her spiritual superiority; she is the "Tall Poppy" whose only crime is her memory of beauty. This characteristic isolation renders her vulnerable to a mob that fears her silence as much as her memories. Ultimately, Margot represents the tragedy of being a witness to light in a world that has institutionalized its own darkness.</p>
+            </div>
           </div>
-          <div class="card" style="border-left-color: var(--indigo);">
-            <span class="highlight-label">The Mob</span>
-            <h3>William & The Class</h3>
-            <p>William serves as the predatory catalyst for the class, representing the dark side of unled, bored, and amnesiac youth. The class as a whole exhibits the psychological state of deindividuation, acting as a single organism driven by existential envy rather than individual malice. Their defining characteristic is a collective cruelty that arises when they encounter a truth they can no longer possess. By locking Margot in the closet, the group finds a sense of immunity and shared responsibility for their malicious act. Lacking individual names and consciences, they represent the tragedy of a society that chooses to blind its prophets to maintain its comfortable amnesia. Their final silence is the characteristic realization of their irreversible loss of innocence.</p>
+          <div>
+            <div class="img-wrap" style="height: 350px;">
+              <img src="https://images.unsplash.com/photo-1549490349-8643362247b5?q=80&w=1000" alt="Shadowy crowd" style="height: 100%; object-fit: cover;">
+            </div>
+            <div class="card" style="border-left-color: var(--indigo);">
+              <span class="highlight-label">The Mob</span>
+              <h3>William & The Hive Mind</h3>
+              <p>William serves as the predatory catalyst for the class, representing the dark side of unled, bored, and amnesiac youth. The class as a whole exhibits the psychological state of deindividuation, acting as a single organism driven by existential envy rather than individual malice. Their defining characteristic is a collective cruelty that arises when they encounter a truth they can no longer possess. By locking Margot in the closet, the group finds a sense of immunity and shared responsibility for their malicious act. Lacking individual names and consciences, they represent the tragedy of a society that chooses to blind its prophets to maintain its comfortable amnesia.</p>
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- 5. SYMBOLISM & CONFLICT -->
+      <!-- 5. SYMBOLISM & ATMOSPHERE GALLERY -->
       <section id="analysis">
         <div class="section-header" style="border-color: var(--rose);">
           <div class="icon-box" style="background: var(--rose);">✨</div>
           <h2 style="background: linear-gradient(to right, var(--rose), var(--orange)); -webkit-background-clip: text; color: transparent;">Thematic Architecture</h2>
         </div>
-        <div class="grid grid-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem;">
-          <div class="card">
-            <span class="highlight-label">Symbolism</span>
-            <h3>The Sun & The Closet</h3>
-            <p>The <b>Sun</b> is the ultimate symbol of divinity, spiritual awakening, and the objective truth of a higher reality that the Venusian children have forgotten. Bradbury describes it as a "flower that blooms for just one hour," emphasizing the fleeting nature of miracles in a dark world. Conversely, the <b>Closet</b> represents the dark corners of the human heart where we bury the truths we are too insecure to face. It is a womb of darkness that symbolizes the physical and psychological suppression of the "Other" by the majority. Locking the door is the mob's attempt to "murder" the witness of light, while opening it signifies the birth of collective guilt. Together, they represent the constant war between enlightenment and repression.</p>
+        <div class="grid-3">
+          <div class="card" style="padding: 3rem;">
+            <div class="img-wrap" style="height: 200px;">
+               <img sr"https://i.natgeofe.com/k/acd528f6-0862-4a81-94d9-29084bdc0d47/sun_16x9.jpg?w=1200 " alt="The Sun breakthrough" style="height: 100%; object-fit: cover;">
+            </div>
+            <h3>The Sun</h3>
+            <p style="font-size: 1rem;">The Sun is the ultimate symbol of divinity and truth. Bradbury describes it as a "flower that blooms for just one hour," representing the fleeting nature of miracles in a dark world.</p>
           </div>
-          <div class="card">
-            <span class="highlight-text">Conflict Analysis</span>
-            <h3>Individual vs. The Hive Mind</h3>
-            <p>The primary conflict is the violent exclusion of Margot’s individual memory by the class's collective amnesia. Margot’s very existence acts as a painful reminder of a world the other children have lost, triggering an unbearable internal tension. To resolve this amnesia-threat, the group performs a sociological ritual of exclusion by physically and mentally isolating the outsider. This conflict demonstrates how societies often seek to "equalize" through the destruction of the gifted or the different. The silence that follows the act proves that the group has achieved a temporary unity through a shared, irreversible crime. In the end, the physical conflict transitions into a permanent psychological burden of guilt that rain cannot wash away.</p>
+          <div class="card" style="padding: 3rem; border-top: 4px solid var(--blue);">
+            <div class="img-wrap" style="height: 200px;">
+               <img src="https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?q=80&w=1000" alt="Rain on a window" style="height: 100%; object-fit: cover;">
+            </div>
+            <h3>The Rain</h3>
+            <p style="font-size: 1rem;">A "conveyor belt" of psychological amnesia. It washes away empathy and compassion, creating a mindless mob trapped in sensory deprivation.</p>
+          </div>
+          <div class="card" style="padding: 3rem; border-top: 4px solid var(--indigo);">
+            <div class="img-wrap" style="height: 200px;">
+               <img src="https://images.unsplash.com/photo-1511211116241-118e95973b06?q=80&w=1000" alt="Dark closet door" style="height: 100%; object-fit: cover;">
+            </div>
+            <h3>The Closet</h3>
+            <p style="font-size: 1rem;">The dark corner of the human heart where we bury the truths we are too insecure to face. It is the womb of collective guilt and repression.</p>
           </div>
         </div>
       </section>
@@ -279,15 +319,20 @@
           <div class="icon-box" style="background: #fff; color: var(--bg);">💬</div>
           <h2 style="color: #fff;">Personal Connection: The Real "Closet"</h2>
         </div>
-        <div class="reflection-box">
-          <blockquote>
-            <b>This story resonated deeply with my personal experience, particularly the theme of collective bullying and the trauma of exclusion.</b> In my previous high school, there was a female classmate who was always the target of rumors—a malicious claim that she got pregnant at fourteen turned her into a spectacle. Like Margot, she was peered at and mocked during breaks by classmates who valued drama over her humanity, eventually forcing her to transfer schools. <br><br>
-            Furthermore, this parallels my own experience as an international student in Canada, where I arrived with full trust only to encounter a hostile environment. When I moved into a host family, the initial friendliness turned into a nightmare once I announced my transfer; I was yelled at and abused in a language I was still learning. Being a minor without other friends, <b>I felt exactly like Margot locked in that closet</b>—isolated, vulnerable, and enduring a hostile atmosphere while everyone else moved on. <b>Like Margot, I noticed the "anomalies" in their attitude but chose to ignore them to avoid tension,</b> hoping for a "sunlight" (a smooth move) that was being sabotaged. These experiences remind me that people must always be responsible for their own behavior and the impact on others, especially when they are at their most vulnerable.
-          </blockquote>
+        <div class="grid-2">
+          <div class="reflection-box">
+            <blockquote>
+              <b>This story resonated deeply with my personal experience, particularly the theme of collective bullying and the trauma of exclusion.</b> In my previous high school, there was a female classmate who was always the target of rumors—a malicious claim that she got pregnant at fourteen turned her into a spectacle. Like Margot, she was peered at and mocked during breaks by classmates who valued drama over her humanity, eventually forcing her to transfer schools. <br><br>
+              Furthermore, this parallels my own experience as an international student in Canada, where I arrived with full trust only to encounter a hostile environment. When I moved into a host family, the initial friendliness turned into a nightmare once I announced my transfer; I was yelled at and abused in a language I was still learning. Being a minor without other friends, <b>I felt exactly like Margot locked in that closet</b>—isolated, vulnerable, and enduring a hostile atmosphere while everyone else moved on. 
+            </blockquote>
+          </div>
+          <div class="img-wrap" style="height: 100%;">
+             <img src="https://images.unsplash.com/photo-1516733958055-af99b274c802?q=80&w=1000" alt="Lonely person in city lights" style="height: 100%; object-fit: cover;">
+          </div>
         </div>
       </section>
 
-      <!-- 7. VIDEO DEFENSE -->
+      <!-- 7. VIDEO -->
       <section id="media">
         <div class="section-header" style="border-color: var(--blue);">
           <div class="icon-box" style="background: var(--blue);">▶</div>
@@ -314,9 +359,9 @@
   <script>
     const DATA = {
       timeline: [
-        { year: "1920", event: "Birth of a Visionary", detail: "Ray Bradbury was born in Waukegan, IL. His self-taught education in libraries fostered a rhythmic, poetic prose that would later define his psychological science fiction. He focused on the human heart rather than just machines, creating stories that explore the existential dread lurking beneath everyday life. His early love for magic and silent films shaped his cinematic storytelling style." },
-        { year: "1954", event: "Venusian Publication", detail: "Published 'All Summer in a Day' during the peak of the Cold War and the early Space Race. The story served as a powerful metaphor for the pervasive fear of the 'unthinking mob' and the sacrifice of individuality for social cohesion. It was a period when individuality was often crushed by the pressure to conform to national security or social norms. Bradbury used Venus to critique these Earthly behaviors from a safe distance." },
-        { year: "Legacy", event: "The Poet of Sci-Fi", detail: "Bradbury died as a titan who successfully bridged the gap between pulp science fiction and high-level academia. His work is still used to teach sensory imagery and character depth, emphasizing that sci-fi is a mirror to prevent dark futures, not just predict them. He famously noted that his stories were intended to prevent the world he wrote about from becoming a reality. His influence resonates in every digital and multimodal analysis of literature today." }
+        { year: "1920", event: "Birth of a Visionary", detail: "Ray Bradbury was born in Waukegan, IL. His self-taught education in libraries fostered a rhythmic, poetic prose that would later define his psychological science fiction. He focused on the human heart rather than just machines, creating stories that explore the existential dread lurking beneath everyday life." },
+        { year: "1954", event: "Venusian Publication", detail: "Published 'All Summer in a Day' during the peak of the Cold War. The story served as a powerful metaphor for the pervasive fear of the 'unthinking mob' and the sacrifice of individuality for social cohesion. Bradbury used Venus to critique these Earthly behaviors from a safe distance." },
+        { year: "Legacy", event: "The Poet of Sci-Fi", detail: "Bradbury died as a titan who successfully bridged the gap between pulp science fiction and high-level academia. His influence resonates in every digital and multimodal analysis of literature today, used to teach sensory imagery and character depth." }
       ],
       plotArc: [
         { label: "Exposition", title: "The Gray Sensory Prison", desc: "The story establishes planet Venus as a world defined by a relentless, suffocating seven-year cycle of rain. The children live in underground tunnels, having spent their entire conscious lives in a state of psychological amnesia regarding the sun. Margot, an outsider from Earth who arrived five years ago, is the only one who remembers the light's warmth and color. This shared sensory deprivation creates an atmosphere of deep-seated irritability and spiritual starvation within the class. The opening scene effectively sets the stage for the friction between those who possess truth and those who live in shadows." },
@@ -330,12 +375,12 @@
     function init() {
       // Rain Effect
       const r = document.getElementById('rain-box');
-      for(let i=0; i<130; i++) {
+      for(let i=0; i<100; i++) {
         const d = document.createElement('div');
         d.className = 'drop';
         d.style.left = Math.random() * 100 + 'vw';
-        d.style.height = (120 + Math.random() * 80) + 'px';
-        d.style.animationDuration = (0.3 + Math.random() * 0.7) + 's';
+        d.style.height = (100 + Math.random() * 80) + 'px';
+        d.style.animationDuration = (0.4 + Math.random() * 0.8) + 's';
         d.style.animationDelay = Math.random() * 5 + 's';
         r.appendChild(d);
       }
@@ -357,14 +402,14 @@
       const step = DATA.plotArc[idx];
       const card = document.getElementById('plot-display-card');
       card.style.opacity = '0';
-      card.style.transform = 'translateX(-20px)';
+      card.style.transform = 'translateY(10px)';
       
       setTimeout(() => {
         document.getElementById('p-label').innerText = step.label;
         document.getElementById('p-title').innerText = step.title;
         document.getElementById('p-desc').innerText = step.desc;
         card.style.opacity = '1';
-        card.style.transform = 'translateX(0)';
+        card.style.transform = 'translateY(0)';
       }, 300);
     }
 
